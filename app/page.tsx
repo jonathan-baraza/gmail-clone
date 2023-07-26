@@ -7,5 +7,5 @@ export const metadata: Metadata = {
   },
 };
 export default function Home() {
-  return <main>Google clone init</main>;
+  return <div></div>;
 }
