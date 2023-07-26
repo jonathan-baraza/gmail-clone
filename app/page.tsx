@@ -3,18 +3,14 @@ import type { Metadata } from "next";
 import { FaUser } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import LineLoader from "@/components/loaders/LineLoader";
-export const metadata: Metadata = {
-  title: "Gmail",
-  description: "Gmail clone",
-  icons: {
-    icon: "/icons/icon4.png",
-  },
-};
+import { useState } from "react";
+
 export default function Home() {
   const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <>
-      <LineLoader />
+      {loading && <LineLoader />}
       <div className="min-h-[100vh]  flex  items-center justify-center flex-col">
         <div className="bg-[#ffab40] rounded-full p-8 mb-10">
           <FaUser size={40} color="#402400" />
