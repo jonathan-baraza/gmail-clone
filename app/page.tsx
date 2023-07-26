@@ -13,6 +13,8 @@ export default function Home() {
       <div className="bg-[#ffab40] rounded-full p-8 mb-10">
         <FaUser size={40} color="#402400" />
       </div>
+      <img src="./welcomepic1.png" className="absolute left-0" />
+      <img src="./welcomepic2.png" className="absolute right-0" />
       <div className="text-[#202124] text-[35px] font-semibold ">
         Set up your new chrome profile
       </div>
