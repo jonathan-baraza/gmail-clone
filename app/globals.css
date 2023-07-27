@@ -65,3 +65,14 @@
   z-index: 12;
   cursor: default;
 }
+
+.active-label-container label {
+  transform: translate(0, -10px) scale(0.8);
+  color: black;
+  z-index: 12;
+  cursor: default;
+}
+
+.active-label-container input {
+  background-color: white !important;
+}
