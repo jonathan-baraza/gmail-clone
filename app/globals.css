@@ -30,3 +30,20 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
+.text-dark {
+  color: #202124 !important;
+}
+
+.custom_input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.custom_input:focus:-moz-placeholder {
+  color: transparent;
+} /* FF 4-18 */
+.custom_input:focus::-moz-placeholder {
+  color: transparent;
+} /* FF 19+ */
+.custom_input:focus:-ms-input-placeholder {
+  color: transparent;
+} /* IE 10+ */
