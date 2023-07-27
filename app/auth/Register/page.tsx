@@ -59,6 +59,35 @@ const Register = () => {
         email: ["Please enter your email"],
       }));
     }
+
+    if (!data.password) {
+      setErrors((prevErrors: any) => ({
+        ...prevErrors,
+        password: ["Please enter your password"],
+      }));
+    }
+
+    if (data.password && data.password.length < 6) {
+      setErrors((prevErrors: any) => ({
+        ...prevErrors,
+        password: ["Password must be atleast six characters"],
+      }));
+    }
+
+    if (!data.password2) {
+      setErrors((prevErrors: any) => ({
+        ...prevErrors,
+        password2: ["Please confirm your password"],
+      }));
+    }
+
+    if (data.password !== data.password2) {
+      setErrors((prevErrors: any) => ({
+        ...prevErrors,
+        password: ["The two passwords do not match"],
+        password2: ["The two passwords do not match"],
+      }));
+    }
   };
 
   return (
@@ -154,7 +183,11 @@ const Register = () => {
             onChange={handleSetData}
             onFocus={() => setFocused("password")}
             onBlur={() => setFocused("")}
-            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[13px]  outline-[#1b66c8]"
+            className={`w-full bg-white z-3 border ${
+              errors?.password?.length > 0
+                ? "border-red-500"
+                : "border-gray-300"
+            } rounded p-[13px]  outline-[#1b66c8]  `}
           />
           <label
             className="float-label z-1 font-[500] ml-4 bg-white text-gray-500 px-2"
@@ -162,6 +195,17 @@ const Register = () => {
           >
             Password
           </label>
+          <ul>
+            {errors.password.map((error) => (
+              <li
+                key={error}
+                className="text-red-500 text-xs flex items-center p-1"
+              >
+                <FaInfoCircle className="mr-1" />
+                {error}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Confirm Password */}
@@ -179,7 +223,11 @@ const Register = () => {
             onChange={handleSetData}
             onFocus={() => setFocused("password2")}
             onBlur={() => setFocused("")}
-            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[13px]  outline-[#1b66c8]"
+            className={`w-full bg-white z-3 border ${
+              errors?.password2?.length > 0
+                ? "border-red-500"
+                : "border-gray-300"
+            } rounded p-[13px]  outline-[#1b66c8]  `}
           />
           <label
             className="float-label z-1 font-[500] ml-4 bg-white text-gray-500 px-2"
@@ -187,6 +235,17 @@ const Register = () => {
           >
             Confirm password
           </label>
+          <ul>
+            {errors.password2.map((error) => (
+              <li
+                key={error}
+                className="text-red-500 text-xs flex items-center p-1"
+              >
+                <FaInfoCircle className="mr-1" />
+                {error}
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="mt-8 flex justify-between items-center w-full">
           <div className=" text-[#1a73e8] hover:cursor-pointer hover:bg-[#f1f7fe] p-2  text-sm font-bold">
