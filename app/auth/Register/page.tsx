@@ -1,5 +1,3 @@
-import React from "react";
-
 const Register = () => {
   return (
     <div className="w-full min-h-[100vh] flex items-center justify-center">
@@ -7,19 +5,19 @@ const Register = () => {
         <img src="/google.svg" className="w-1/5" alt="google" />
         <div className="text-[28px] text-dark mt-2 ">Create your Account</div>
         <div className="text-lg text-dark mb-8">Enter your details</div>
-        <div className="w-full">
+        <div className="w-full float-label-container relative flex flex-col ">
           <input
             type="text"
-            placeholder="First name"
-            className="w-full border border-gray-300 rounded p-[15px] placeholder:text-gray-500 placeholder:text-lg outline-[#1b66c8]"
+            name="firstName"
+            id="firstName"
+            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[15px]  outline-[#1b66c8]"
           />
-        </div>
-        <div className="w-full mt-5">
-          <input
-            type="text"
-            placeholder="Last name"
-            className="w-full border custom_input  border-gray-300 rounded p-[15px] placeholder:text-gray-500 placeholder:text-lg outline-[#1b66c8] focus:placeholder-opacity-0"
-          />
+          <label
+            className="float-label z-1 bg-red-300 ml-4 bg-white text-gray-600 px-2"
+            htmlFor="firstName"
+          >
+            First Name
+          </label>
         </div>
       </div>
     </div>
