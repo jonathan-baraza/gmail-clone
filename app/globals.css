@@ -47,3 +47,21 @@
 .custom_input:focus:-ms-input-placeholder {
   color: transparent;
 } /* IE 10+ */
+
+.float-label {
+  position: absolute;
+  transform: translate(0, 60%) scale(1);
+  cursor: text;
+}
+
+.float-label-container .float-label {
+  transform-origin: top left;
+  transition: all 0.2s ease-out;
+}
+
+.float-label-container:focus-within label {
+  transform: translate(0, -10px) scale(0.8);
+  color: #1a73e8;
+  z-index: 12;
+  cursor: default;
+}
