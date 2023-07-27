@@ -1,7 +1,7 @@
 const Register = () => {
   return (
-    <div className="w-full min-h-[100vh] flex items-center justify-center">
-      <div className="border border-gray-300 rounded-lg w-1/3 py-12 px-6 flex flex-col items-center">
+    <div className="w-full min-h-[100vh] flex items-center justify-center ">
+      <div className=" border border-gray-300 rounded-lg w-full md:w-1/3 py-12 px-6 flex flex-col items-center">
         <img src="/google.svg" className="w-1/5" alt="google" />
         <div className="text-[28px] text-dark mt-2 ">Create your Account</div>
         <div className="text-lg text-dark mb-8">Enter your details</div>
@@ -11,10 +11,10 @@ const Register = () => {
             type="text"
             name="name"
             id="name"
-            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[15px]  outline-[#1b66c8]"
+            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[13px]  outline-[#1b66c8]"
           />
           <label
-            className="float-label z-1 font-[500] ml-4 bg-white text-gray-600 px-2"
+            className="float-label z-1 font-[500] ml-4 bg-white text-gray-500 px-2"
             htmlFor="name"
           >
             Name
@@ -27,10 +27,10 @@ const Register = () => {
             type="email"
             name="email"
             id="email"
-            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[15px]  outline-[#1b66c8]"
+            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[13px]  outline-[#1b66c8]"
           />
           <label
-            className="float-label z-1 font-[500] ml-4 bg-white text-gray-600 px-2"
+            className="float-label z-1 font-[500] ml-4 bg-white text-gray-500 px-2"
             htmlFor="email"
           >
             Email
@@ -43,10 +43,10 @@ const Register = () => {
             type="password"
             name="password"
             id="password"
-            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[15px]  outline-[#1b66c8]"
+            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[13px]  outline-[#1b66c8]"
           />
           <label
-            className="float-label z-1 font-[500] ml-4 bg-white text-gray-600 px-2"
+            className="float-label z-1 font-[500] ml-4 bg-white text-gray-500 px-2"
             htmlFor="password"
           >
             Password
@@ -59,14 +59,25 @@ const Register = () => {
             type="password"
             name="password2"
             id="password2"
-            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[15px]  outline-[#1b66c8]"
+            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[13px]  outline-[#1b66c8]"
           />
           <label
-            className="float-label z-1 font-[500] ml-4 bg-white text-gray-600 px-2"
+            className="float-label z-1 font-[500] ml-4 bg-white text-gray-500 px-2"
             htmlFor="password2"
           >
             Confirm password
           </label>
+        </div>
+        <div className="mt-8 flex justify-between items-center w-full">
+          <div className=" text-[#1a73e8] hover:cursor-pointer hover:bg-[#f1f7fe] p-2  text-sm font-bold">
+            Sign up with google (lol)
+          </div>
+          <button className="bg-[#1a73e8] hover:bg-[#1567d5] text-sm text-white rounded py-2 px-6">
+            Next
+          </button>
+        </div>
+        <div className=" text-[#1a73e8] mt-4 w-full hover:cursor-pointer hover:underline p-2  text-sm font-bold">
+          Already have an account?
         </div>
       </div>
     </div>
