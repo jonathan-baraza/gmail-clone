@@ -1,12 +1,21 @@
 "use client";
 
 import { ChangeEvent, ReactEventHandler, useState } from "react";
+import { FaInfoCircle } from "react-icons/fa";
 type dataType = {
   name?: string;
   email?: string;
   password?: string;
   password2?: string;
 };
+
+type errorType = {
+  name: string[];
+  email: string[];
+  password: string[];
+  password2: string[];
+};
+
 const Register = () => {
   const [data, setData] = useState<dataType>({
     name: "",
@@ -15,9 +24,20 @@ const Register = () => {
     password2: "",
   });
 
+  const [errors, setErrors] = useState<errorType>({
+    name: [],
+    email: [],
+    password: [],
+    password2: [],
+  });
+
   const [focused, setFocused] = useState<string>("");
   const handleSetData = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
+    setErrors((prevErrors: any) => ({
+      ...prevErrors,
+      [name]: [],
+    }));
     setData((prevData: dataType) => ({
       ...prevData,
       [name]: e.target.value,
@@ -25,9 +45,22 @@ const Register = () => {
   };
 
   const handleValidations = () => {
-    console.log("setData");
-    console.log(data);
+    setErrors({ name: [], email: [], password: [], password2: [] });
+    if (!data.name) {
+      setErrors((prevErrors: any) => ({
+        ...prevErrors,
+        name: ["Please enter your name"],
+      }));
+    }
+
+    if (!data.email) {
+      setErrors((prevErrors: any) => ({
+        ...prevErrors,
+        email: ["Please enter your email"],
+      }));
+    }
   };
+
   return (
     <div className="w-full min-h-[100vh] flex items-center justify-center ">
       <div className=" border border-gray-300 rounded-lg w-full md:w-1/3 py-12 px-6 flex flex-col items-center">
@@ -48,7 +81,9 @@ const Register = () => {
             onChange={handleSetData}
             onFocus={() => setFocused("name")}
             onBlur={() => setFocused("")}
-            className={`w-full bg-white z-3 border border-gray-300 rounded p-[13px]  outline-[#1b66c8]  `}
+            className={`w-full bg-white z-3 border ${
+              errors?.name?.length > 0 ? "border-red-500" : "border-gray-300"
+            } rounded p-[13px]  outline-[#1b66c8]  `}
           />
           <label
             className="float-label z-1 font-[500] ml-4 bg-white text-gray-500 px-2"
@@ -56,6 +91,17 @@ const Register = () => {
           >
             Name
           </label>
+          <ul>
+            {errors.name.map((error) => (
+              <li
+                key={error}
+                className="text-red-500 text-xs flex items-center p-1"
+              >
+                <FaInfoCircle className="mr-1" />
+                {error}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Email */}
@@ -72,7 +118,9 @@ const Register = () => {
             onChange={handleSetData}
             onFocus={() => setFocused("email")}
             onBlur={() => setFocused("")}
-            className="w-full bg-opacity-0 z-3 border border-gray-300 rounded p-[13px]  outline-[#1b66c8]"
+            className={`w-full bg-white z-3 border ${
+              errors?.email?.length > 0 ? "border-red-500" : "border-gray-300"
+            } rounded p-[13px]  outline-[#1b66c8]  `}
           />
           <label
             className="float-label z-1 font-[500] ml-4 bg-white text-gray-500 px-2"
@@ -80,6 +128,17 @@ const Register = () => {
           >
             Email
           </label>
+          <ul>
+            {errors.email.map((error) => (
+              <li
+                key={error}
+                className="text-red-500 text-xs flex items-center p-1"
+              >
+                <FaInfoCircle className="mr-1" />
+                {error}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Passsword */}
