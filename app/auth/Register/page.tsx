@@ -1,11 +1,13 @@
 "use client";
 
-import { ChangeEvent, ReactEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import LineLoader from "@/components/loaders/LineLoader";
 
 const Register = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<AuthFields>({
     name: "",
     email: "",
@@ -84,7 +86,8 @@ const Register = () => {
 
   return (
     <div className="w-full min-h-[100vh] flex items-center justify-center ">
-      <div className=" border border-gray-300 rounded-lg w-full md:w-1/3 py-12 px-6 flex flex-col items-center">
+      <div className=" border border-gray-300 rounded-lg w-full md:w-1/3 py-12 px-6 flex flex-col items-center relative">
+        {loading && <LineLoader overlay={true} />}
         <img src="/google.svg" className="w-1/5" alt="google" />
         <div className="text-[28px] text-dark mt-2 ">Create your Account</div>
         <div className="text-lg text-dark mb-8">Enter your details</div>
