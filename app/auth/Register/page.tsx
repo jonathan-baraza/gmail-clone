@@ -34,10 +34,7 @@ const Register = () => {
   const [focused, setFocused] = useState<string>("");
   const handleSetData = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
-    setErrors((prevErrors: any) => ({
-      ...prevErrors,
-      [name]: [],
-    }));
+    clearErrors();
     setData((prevData: dataType) => ({
       ...prevData,
       [name]: e.target.value,
@@ -45,7 +42,7 @@ const Register = () => {
   };
 
   const handleValidations = () => {
-    setErrors({ name: [], email: [], password: [], password2: [] });
+    clearErrors();
     if (!data.name) {
       setErrors((prevErrors: any) => ({
         ...prevErrors,
@@ -90,6 +87,10 @@ const Register = () => {
     }
 
     console.log(data);
+  };
+
+  const clearErrors = () => {
+    setErrors({ name: [], email: [], password: [], password2: [] });
   };
 
   return (
