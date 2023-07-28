@@ -8,7 +8,7 @@ import LineLoader from "@/components/loaders/LineLoader";
 const Register = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<AuthFields>({
+  const [data, setData] = useState<AuthSignUpFields>({
     name: "",
     email: "",
     password: "",
@@ -26,7 +26,7 @@ const Register = () => {
   const handleSetData = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     clearErrors();
-    setData((prevData: AuthFields) => ({
+    setData((prevData: AuthSignUpFields) => ({
       ...prevData,
       [name]: e.target.value,
     }));
