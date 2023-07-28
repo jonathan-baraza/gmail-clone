@@ -88,6 +88,8 @@ const Register = () => {
         password2: ["The two passwords do not match"],
       }));
     }
+
+    console.log(data);
   };
 
   return (
