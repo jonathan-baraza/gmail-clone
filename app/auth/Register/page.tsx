@@ -34,50 +34,63 @@ const Register = () => {
 
   const handleValidations = () => {
     clearErrors();
-    if (!data.name) {
-      setErrors((prevErrors: any) => ({
-        ...prevErrors,
-        name: ["Please enter your name"],
-      }));
-    }
+    if (
+      !data.name ||
+      !data.email ||
+      !data.password ||
+      !data.password2 ||
+      (data.password && data.password.length < 6) ||
+      data.password !== data.password2
+    ) {
+      if (!data.name) {
+        setErrors((prevErrors: any) => ({
+          ...prevErrors,
+          name: ["Please enter your name"],
+        }));
+      }
 
-    if (!data.email) {
-      setErrors((prevErrors: any) => ({
-        ...prevErrors,
-        email: ["Please enter your email"],
-      }));
-    }
+      if (!data.email) {
+        setErrors((prevErrors: any) => ({
+          ...prevErrors,
+          email: ["Please enter your email"],
+        }));
+      }
 
-    if (!data.password) {
-      setErrors((prevErrors: any) => ({
-        ...prevErrors,
-        password: ["Please enter your password"],
-      }));
-    }
+      if (!data.password) {
+        setErrors((prevErrors: any) => ({
+          ...prevErrors,
+          password: ["Please enter your password"],
+        }));
+      }
 
-    if (data.password && data.password.length < 6) {
-      setErrors((prevErrors: any) => ({
-        ...prevErrors,
-        password: ["Password must be atleast six characters"],
-      }));
-    }
+      if (!data.password2) {
+        setErrors((prevErrors: any) => ({
+          ...prevErrors,
+          password2: ["Please confirm your password"],
+        }));
+      }
 
-    if (!data.password2) {
-      setErrors((prevErrors: any) => ({
-        ...prevErrors,
-        password2: ["Please confirm your password"],
-      }));
-    }
+      if (data.password && data.password.length < 6) {
+        setErrors((prevErrors: any) => ({
+          ...prevErrors,
+          password: ["Password must be atleast six characters"],
+        }));
+      }
 
-    if (data.password !== data.password2) {
-      setErrors((prevErrors: any) => ({
-        ...prevErrors,
-        password: ["The two passwords do not match"],
-        password2: ["The two passwords do not match"],
-      }));
+      if (data.password !== data.password2) {
+        setErrors((prevErrors: any) => ({
+          ...prevErrors,
+          password: ["The two passwords do not match"],
+          password2: ["The two passwords do not match"],
+        }));
+      }
+    } else {
+      handleRegister();
     }
+  };
 
-    console.log(data);
+  const handleRegister = async () => {
+    setLoading(true);
   };
 
   const clearErrors = () => {
@@ -254,7 +267,10 @@ const Register = () => {
           </button>
         </div>
         <div
-          onClick={() => router.push("/auth/login")}
+          onClick={() => {
+            setLoading(true);
+            router.push("/auth/login");
+          }}
           className=" text-[#1a73e8] mt-4 w-full hover:cursor-pointer hover:underline p-2  text-sm font-bold"
         >
           Already have an account?
