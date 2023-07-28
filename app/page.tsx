@@ -27,7 +27,7 @@ export default function Home() {
         <button
           onClick={() => {
             setLoading(true);
-            router.push("/auth/login");
+            router.push("/auth/signin");
           }}
           className="bg-[#1a73e8] text-xs py-2 w-[200px] hover:bg-[#1565d0] rounded text-white mb-4"
         >
@@ -36,7 +36,7 @@ export default function Home() {
         <button
           onClick={() => {
             setLoading(true);
-            router.push("/auth/register");
+            router.push("/auth/signup");
           }}
           className="bg-[#1a73e8] text-xs py-2 w-[200px] hover:bg-[#1565d0] rounded text-white"
         >
