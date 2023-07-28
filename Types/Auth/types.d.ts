@@ -10,9 +10,14 @@ type AuthSignInFields = {
   password?: string;
 };
 
-type AuthError = {
+type AuthSignUpError = {
   name: string[];
   email: string[];
   password: string[];
   password2: string[];
+};
+
+type AuthSignInError = {
+  email: string[];
+  password: string[];
 };
