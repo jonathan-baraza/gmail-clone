@@ -2,29 +2,18 @@
 
 import { ChangeEvent, ReactEventHandler, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
-type dataType = {
-  name?: string;
-  email?: string;
-  password?: string;
-  password2?: string;
-};
-
-type errorType = {
-  name: string[];
-  email: string[];
-  password: string[];
-  password2: string[];
-};
+import { useRouter } from "next/navigation";
 
 const Register = () => {
-  const [data, setData] = useState<dataType>({
+  const router = useRouter();
+  const [data, setData] = useState<AuthFields>({
     name: "",
     email: "",
     password: "",
     password2: "",
   });
 
-  const [errors, setErrors] = useState<errorType>({
+  const [errors, setErrors] = useState<AuthError>({
     name: [],
     email: [],
     password: [],
@@ -35,7 +24,7 @@ const Register = () => {
   const handleSetData = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     clearErrors();
-    setData((prevData: dataType) => ({
+    setData((prevData: AuthFields) => ({
       ...prevData,
       [name]: e.target.value,
     }));
@@ -261,7 +250,10 @@ const Register = () => {
             Next
           </button>
         </div>
-        <div className=" text-[#1a73e8] mt-4 w-full hover:cursor-pointer hover:underline p-2  text-sm font-bold">
+        <div
+          onClick={() => router.push("/auth/login")}
+          className=" text-[#1a73e8] mt-4 w-full hover:cursor-pointer hover:underline p-2  text-sm font-bold"
+        >
           Already have an account?
         </div>
       </div>
