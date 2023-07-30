@@ -9,18 +9,19 @@ export default function Home() {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   return (
-    <>
+    <div className="m-0 p-0 flex-1 w-full flex items-center justify-center relative">
       {loading && <LineLoader />}
-      <div className="min-h-[100vh]  flex  items-center justify-center flex-col">
-        <div className="bg-[#5ab9c1] rounded-full p-8 mb-10">
+      <img src="./welcomepic1.png" className="absolute left-0 -z-2 " />
+      <img src="./welcomepic2.png" className="absolute right-0 -z-2" />
+      <div className="min-h-[100vh] z-50 space-y-6 md:space-y-5  flex  items-center justify-center flex-col">
+        <div className="bg-[#5ab9c1] rounded-full p-8 mb-10 z-50">
           <FaUser size={40} color="#081314" />
         </div>
-        <img src="./welcomepic1.png" className="absolute left-0" />
-        <img src="./welcomepic2.png" className="absolute right-0" />
-        <div className="text-[#202124] text-[35px] font-semibold ">
+
+        <div className="text-[#202124]  text-[27px] md:text-[35px] text-center font-semibold ">
           Set up your clone profile
         </div>
-        <div className="text-gray-500 text-lg mb-8">
+        <div className="text-gray-500 text-lg text-center mb-8 bg-white">
           To access your Chrome stuff across all your devices, sign in, then
           turn on sync.
         </div>
@@ -43,6 +44,6 @@ export default function Home() {
           Create an account
         </button>
       </div>
-    </>
+    </div>
   );
 }
