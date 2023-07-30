@@ -27,5 +27,5 @@ export default function RootLayout({
   if (!auth.currentUser?.email) {
     return router.push("/auth/signin");
   }
-  return <>{children}</>;
+  return <div className="m-0 p-0">{children}</div>;
 }

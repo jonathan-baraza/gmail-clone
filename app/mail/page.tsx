@@ -3,12 +3,15 @@ import LineLoader from "@/components/loaders/LineLoader";
 import { auth } from "@/config/firebase";
 import { signOut } from "firebase/auth";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 function Mail() {
+  const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const handleSignOut = async () => {
     setLoading(true);
     try {
       await signOut(auth);
+      router.push("/auth/signin");
     } catch (error) {
       //TODO: handle signout error better
       alert("Failed to sign you out");

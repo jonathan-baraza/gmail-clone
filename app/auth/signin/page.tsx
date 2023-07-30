@@ -60,8 +60,7 @@ const SignIn = () => {
         data.email!,
         data.password!
       );
-      console.log("sign in response");
-      console.log(response);
+      router.push("/mail");
     } catch (error) {
       if (error instanceof Error) {
         console.log("error");
