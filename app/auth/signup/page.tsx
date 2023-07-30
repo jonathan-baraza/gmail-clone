@@ -100,22 +100,31 @@ const SignUp = () => {
         data.email!,
         data.password!
       );
-      console.log("sign up response");
-      console.log(response);
     } catch (error) {
-      console.log("error");
-      console.log(error.message);
-      setErrors((prevErrors: any) => ({
-        ...prevErrors,
-        errorMessage: "Something went wrong, now try again later",
-      }));
+      if (error instanceof Error) {
+        console.log("error");
+        console.log(error?.message);
+        const responseError =
+          "Sign up error: " +
+          error.message.split("/")[1].replace(")", "").replace(".", "");
+        setErrors((prevErrors: any) => ({
+          ...prevErrors,
+          errorMessage: responseError,
+        }));
+      }
     } finally {
       setLoading(false);
     }
   };
 
   const clearErrors = () => {
-    setErrors({ name: [], email: [], password: [], password2: [] });
+    setErrors({
+      name: [],
+      email: [],
+      password: [],
+      password2: [],
+      errorMessage: "",
+    });
   };
 
   return (
@@ -132,7 +141,9 @@ const SignUp = () => {
         </div>
         {/* Error */}
         {errors.errorMessage && (
-          <p className="text-red-500 font-semibold">{errors.errorMessage}</p>
+          <p className="text-red-500 font-semibold mb-8">
+            {errors.errorMessage}
+          </p>
         )}
         {/* Name */}
         <div
