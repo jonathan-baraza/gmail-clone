@@ -1,11 +1,14 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import LineLoader from "@/components/loaders/LineLoader";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { auth } from "@/config/firebase";
 
 const SignUp = () => {
@@ -126,6 +129,8 @@ const SignUp = () => {
       errorMessage: "",
     });
   };
+
+
 
   return (
     <div className="w-full min-h-[100vh] flex items-center justify-center ">
