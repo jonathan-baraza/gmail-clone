@@ -100,7 +100,18 @@ const SignUp = () => {
         data.email!,
         data.password!
       );
-    } catch (error) {}
+      console.log("sign up response");
+      console.log(response);
+    } catch (error) {
+      console.log("error");
+      console.log(error.message);
+      setErrors((prevErrors: any) => ({
+        ...prevErrors,
+        errorMessage: "Something went wrong, now try again later",
+      }));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const clearErrors = () => {
@@ -113,7 +124,16 @@ const SignUp = () => {
         {loading && <LineLoader overlay={true} />}
         <img src="/google.svg" className="w-1/5" alt="google" />
         <div className="text-[28px] text-dark mt-2 ">Create your Account</div>
-        <div className="text-lg text-dark mb-8">Enter your details</div>
+
+        <div
+          className={`text-lg text-dark ${errors.errorMessage ? "" : "mb-8"}`}
+        >
+          Enter your details
+        </div>
+        {/* Error */}
+        {errors.errorMessage && (
+          <p className="text-red-500 font-semibold">{errors.errorMessage}</p>
+        )}
         {/* Name */}
         <div
           className={`w-full float-label-container ${
