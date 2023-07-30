@@ -6,10 +6,7 @@ import { useRouter } from "next/navigation";
 import LineLoader from "@/components/loaders/LineLoader";
 
 //Firebase auth
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/config/firebase";
 const SignIn = () => {
   const router = useRouter();
@@ -63,6 +60,8 @@ const SignIn = () => {
         data.email!,
         data.password!
       );
+      console.log("sign in response");
+      console.log(response);
     } catch (error) {
       if (error instanceof Error) {
         console.log("error");
