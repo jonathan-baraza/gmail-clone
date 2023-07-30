@@ -1,6 +1,7 @@
-// "use client";
-
-import { redirect } from "next/navigation";
+"use client";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { auth } from "@/config/firebase";
 
 export default function RootLayout({
@@ -8,8 +9,23 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+
+  //TODO: set loading gif while app is finding out if authenticated
+
+  // Auth state changed listener
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // router.push("/mail");
+      } else {
+        router.push("/auth/signin");
+      }
+    });
+  }, []);
+
   if (!auth.currentUser?.email) {
-    return redirect("/auth/signin");
+    return router.push("/auth/signin");
   }
   return <>{children}</>;
 }
