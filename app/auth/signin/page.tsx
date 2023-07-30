@@ -5,6 +5,12 @@ import { FaInfoCircle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import LineLoader from "@/components/loaders/LineLoader";
 
+//Firebase auth
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "@/config/firebase";
 const SignIn = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
@@ -45,16 +51,37 @@ const SignIn = () => {
         }));
       }
     } else {
-      handleRegister();
+      handleSignIn();
     }
   };
 
-  const handleRegister = async () => {
+  const handleSignIn = async () => {
     setLoading(true);
+    try {
+      const response = await signInWithEmailAndPassword(
+        auth,
+        data.email!,
+        data.password!
+      );
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log("error");
+        console.log(error?.message);
+        const responseError =
+          "Sign in error: " +
+          error.message.split("/")[1].replace(")", "").replace(".", "");
+        setErrors((prevErrors: any) => ({
+          ...prevErrors,
+          errorMessage: responseError,
+        }));
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   const clearErrors = () => {
-    setErrors({ email: [], password: [] });
+    setErrors({ email: [], password: [], errorMessage: "" });
   };
 
   return (
@@ -65,7 +92,17 @@ const SignIn = () => {
         <div className="text-[28px] text-dark mt-2 ">
           Sign in to your Account
         </div>
-        <div className="text-lg text-dark mb-8">Enter your details</div>
+        <div
+          className={`text-lg text-dark ${errors.errorMessage ? "" : "mb-8"}`}
+        >
+          Enter your details
+        </div>
+        {/* Error */}
+        {errors.errorMessage && (
+          <p className="text-red-500 font-semibold mb-8">
+            {errors.errorMessage}
+          </p>
+        )}
 
         {/* Email */}
         <div
