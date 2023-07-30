@@ -5,10 +5,8 @@ import { FaInfoCircle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import LineLoader from "@/components/loaders/LineLoader";
 
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+//Firebase auth
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/config/firebase";
 
 const SignUp = () => {
@@ -91,11 +89,11 @@ const SignUp = () => {
         }));
       }
     } else {
-      handleRegister();
+      handleSignUp();
     }
   };
 
-  const handleRegister = async () => {
+  const handleSignUp = async () => {
     setLoading(true);
     try {
       const response = await createUserWithEmailAndPassword(
@@ -129,8 +127,6 @@ const SignUp = () => {
       errorMessage: "",
     });
   };
-
-
 
   return (
     <div className="w-full min-h-[100vh] flex items-center justify-center ">
