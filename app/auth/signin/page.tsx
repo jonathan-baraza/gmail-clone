@@ -8,7 +8,13 @@ import LineLoader from "@/components/loaders/LineLoader";
 //Firebase auth
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/config/firebase";
+
+//
+import { useAppDispatch } from "@/hooks/reduxHooks";
+import { setUser } from "@/features/slices/AuthSlice";
 const SignIn = () => {
+  //redux
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<AuthSignInFields>({
@@ -60,6 +66,13 @@ const SignIn = () => {
         data.email!,
         data.password!
       );
+
+      const authUser = {
+        name: "Jonathan",
+        email: "king@gmail.com",
+        username: "Superman",
+      };
+      dispatch(setUser({ user: authUser, isAuthenticated: true }));
       router.push("/mail");
     } catch (error) {
       if (error instanceof Error) {
