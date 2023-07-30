@@ -24,8 +24,8 @@ export default function RootLayout({
     });
   }, []);
 
-  if (!auth.currentUser?.email) {
-    return router.push("/auth/signin");
-  }
+  // if (!auth.currentUser?.email) {
+  //   return router.push("/auth/signin");
+  // }
   return <div className="m-0 p-0">{children}</div>;
 }
