@@ -22,8 +22,7 @@ export default function RootLayout({
       if (user) {
         router.push("/mail");
       } else {
-        // User is signed out
-        // ...
+        // router.push("/auth/signin");
       }
     });
   }, []);
