@@ -15,9 +15,11 @@ type AuthSignUpError = {
   email: string[];
   password: string[];
   password2: string[];
+  errorMessage?: string;
 };
 
 type AuthSignInError = {
   email: string[];
   password: string[];
+  errorMessage?: string;
 };
