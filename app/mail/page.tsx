@@ -10,6 +10,7 @@ function Mail() {
     try {
       await signOut(auth);
     } catch (error) {
+      //TODO: handle signout error better
       alert("Failed to sign you out");
     } finally {
       setLoading(false);
