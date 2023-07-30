@@ -5,6 +5,9 @@ import { FaInfoCircle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import LineLoader from "@/components/loaders/LineLoader";
 
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/config/firebase";
+
 const SignUp = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
@@ -91,6 +94,13 @@ const SignUp = () => {
 
   const handleRegister = async () => {
     setLoading(true);
+    try {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        data.email!,
+        data.password!
+      );
+    } catch (error) {}
   };
 
   const clearErrors = () => {
