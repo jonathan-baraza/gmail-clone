@@ -23,7 +23,9 @@ function Mail() {
     <>
       {loading && <LineLoader overlay={true} />}
       <div className="w-full h-[100vh] flex flex-col items-center justify-center">
-        <h1 className="font-bold text-3xl">Welcome to you mail page </h1>
+        <h1 className="font-bold text-3xl">
+          Welcome {auth?.currentUser?.email} to you mail page{" "}
+        </h1>
         <button
           onClick={handleSignOut}
           className="text-white bg-[#1a73e8] hover:bg-[#0d4b9c] hover:cursor-pointer rounded text-sm px-6 py-3 hover:shadow mt-6"
