@@ -4,7 +4,9 @@ import { auth } from "@/config/firebase";
 import { signOut } from "firebase/auth";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/hooks/reduxHooks";
 function Mail() {
+  const user = useAppSelector((state) => state.auth.user);
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const handleSignOut = async () => {
@@ -24,7 +26,7 @@ function Mail() {
       {loading && <LineLoader overlay={true} />}
       <div className="w-full h-[100vh] flex flex-col items-center justify-center">
         <h1 className="font-bold text-3xl">
-          Welcome {auth?.currentUser?.email} to you mail page{" "}
+          Welcome {user?.username} to you mail page{" "}
         </h1>
         <button
           onClick={handleSignOut}
