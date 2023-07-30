@@ -5,6 +5,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { auth } from "@/config/firebase";
+import { Provider } from "react-redux";
+import { store } from "@/features/store/store";
 export const metadata: Metadata = {
   title: "Gmail",
   description: "Gmail clone",
@@ -28,7 +30,9 @@ export default function RootLayout({
   }, []);
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Provider store={store}>{children}</Provider>
+      </body>
     </html>
   );
 }
