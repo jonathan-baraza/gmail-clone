@@ -23,3 +23,8 @@ type AuthSignInError = {
   password: string[];
   errorMessage?: string;
 };
+
+type SetAuthUser = {
+  user: any;
+  isAuthenticated: boolean;
+};
