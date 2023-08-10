@@ -7,7 +7,7 @@ import LineLoader from "@/components/loaders/LineLoader";
 
 //Firebase auth
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/config/firebase";
+import { auth, database } from "@/config/firebase";
 
 //
 import { useAppDispatch } from "@/hooks/reduxHooks";
