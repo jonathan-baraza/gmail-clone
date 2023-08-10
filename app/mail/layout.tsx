@@ -19,7 +19,7 @@ export default function RootLayout({
       if (user) {
         // router.push("/mail");
       } else {
-        router.push("/auth/signin");
+        // router.push("/auth/signin");
       }
     });
   }, []);
