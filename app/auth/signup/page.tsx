@@ -7,7 +7,8 @@ import LineLoader from "@/components/loaders/LineLoader";
 
 //Firebase auth
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/config/firebase";
+import { auth , database} from "@/config/firebase";
+import {ref,set} from "firebase/database"
 
 const SignUp = () => {
   const router = useRouter();
@@ -101,6 +102,16 @@ const SignUp = () => {
         data.email!,
         data.password!
       );
+
+      const userId=response.user.uid;
+      //create users initial profile
+      set(ref(database,"users/"+userId),{
+        name:data.name,
+        photo:"",
+      })
+
+      router.push("/mail");
+
     } catch (error) {
       if (error instanceof Error) {
         console.log("error");
