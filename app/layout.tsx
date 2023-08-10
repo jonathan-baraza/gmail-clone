@@ -22,7 +22,7 @@ export default function RootLayout({
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.push("/mail");
+        // router.push("/mail");
       } else {
         // router.push("/auth/signin");
       }
