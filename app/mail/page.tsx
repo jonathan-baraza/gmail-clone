@@ -11,8 +11,10 @@ function Mail() {
   const [loading, setLoading] = useState<boolean>(false);
   const handleSignOut = async () => {
     setLoading(true);
+    localStorage.clear();
     try {
       await signOut(auth);
+      console.clear()
       router.push("/auth/signin");
     } catch (error) {
       //TODO: handle signout error better
