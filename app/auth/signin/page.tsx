@@ -72,7 +72,9 @@ const SignIn = () => {
         email: "king@gmail.com",
         username: "Superman",
       };
+      
       dispatch(setUser({ user: authUser, isAuthenticated: true }));
+
       router.push("/mail");
     } catch (error) {
       if (error instanceof Error) {
