@@ -17,6 +17,7 @@ const AuthSlice = createSlice({
     clearUser: (state, action) => {
       state.isAuthenticated = false;
       state.user = null;
+     
     },
   },
 });
