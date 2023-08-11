@@ -154,7 +154,7 @@ const CropImage = ({
           className="bg-white relative p-6 w-[80%] flex flex-col md:w-[50%] 
         rounded-xl"
         >
-          <div className="w-full text-center my-2 font-semibold">
+          <div className="w-full text-center mt-4 mb-6 font-semibold">
             Crop your photo
           </div>
 
@@ -198,8 +198,8 @@ const CropImage = ({
               ) : (
                 <>
                   <div className="flex flex-col justify-center items-center w-full h-full">
-                    <div className="w-full text-center text-gray-500">Your preview will appear here</div>
-                    <IoMdPhotos className="m-12" size={100} color="gray"/>
+                    <div className="w-full text-center text-gray-500 text-sm">Your preview will appear here</div>
+                    <IoMdPhotos className="m-6" size={100} color="gray"/>
                   </div>
                 </>
               )}
