@@ -8,7 +8,9 @@ import {ref, update} from "firebase/database"
 import { auth, database } from "@/config/firebase";
 import { toast } from "react-toastify";
 
+
 const UpdateProfile = () => {
+  const router:any=useRouter();
   const [focused, setFocused] = useState<string>("");
   const [data,setData]=useState<ProfileUpdateFields>({
     photo:"",
@@ -43,8 +45,10 @@ const UpdateProfile = () => {
        username: data.username,
      });
     toast.success("Profile updated successfully")
+    router.push("/mail")
      
     } catch (error) {
+      setLoading(false);
       let errorMessage:string="";
       if(error instanceof Error){
         errorMessage=error.message
@@ -54,7 +58,7 @@ const UpdateProfile = () => {
       setErrors([...errors,errorMessage]);
       
     }finally{
-      setLoading(false)
+      // setLoading(false)
     }
   }
 
