@@ -28,3 +28,8 @@ type SetAuthUser = {
   user: any;
   isAuthenticated: boolean;
 };
+
+type ProfileUpdateFields={
+  photo:string,
+  username:string
+}
