@@ -25,9 +25,9 @@ function Mail() {
   };
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      return router.push("/auth/signin");
-    }
+    // if (!isAuthenticated) {
+    //   return router.push("/auth/signin");
+    // }
   }, []);
 
   return (
