@@ -9,6 +9,7 @@ import ReactCrop, {
 } from "react-image-crop";
 import { canvasPreview } from "./canvasPreview";
 import { useDebounceEffect } from "./useDebounceEffect";
+import {IoMdPhotos} from "react-icons/io"
 
 // function centerAspectCrop(
 //   mediaWidth: number,
@@ -31,7 +32,13 @@ import { useDebounceEffect } from "./useDebounceEffect";
 //   );
 // }
 
-const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>void}) => {
+const CropImage = ({
+  imageSrc,
+  hideCropper,
+}: {
+  imageSrc: any;
+  hideCropper: () => void;
+}) => {
   const [crop, setCrop] = useState<Crop>({
     unit: "%",
     x: 25,
@@ -50,6 +57,8 @@ const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>vo
   const [rotate, setRotate] = useState(0);
   const [aspect, setAspect] = useState<number | undefined>();
 
+  const [finishedCropping, setFinishedCropping] = useState<boolean>(false);
+
   // function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
   //   if (e.target.files && e.target.files.length > 0) {
   //     setCrop(undefined); //+ Makes crop preview update between images.
@@ -61,13 +70,13 @@ const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>vo
   //   }
   // }
 
-  useEffect(()=>{
+  useEffect(() => {
     const reader = new FileReader();
     reader.addEventListener("load", () =>
       setImgSrc(reader.result?.toString() || "")
     );
     reader.readAsDataURL(imgSrc);
-  },[])
+  }, []);
 
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     if (aspect) {
@@ -102,6 +111,8 @@ const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>vo
         imgRef.current &&
         previewCanvasRef.current
       ) {
+        console.log("completed crop here");
+        console.log(completedCrop);
         // We use canvasPreview as it's much faster than imgPreview.
         canvasPreview(
           imgRef.current,
@@ -115,6 +126,10 @@ const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>vo
     100,
     [completedCrop, scale, rotate]
   );
+
+  const handleShowFinishedCrop = async () => {
+    setFinishedCropping(true);
+  };
 
   // function handleToggleAspectClick() {
   //   if (aspect) {
@@ -135,99 +150,77 @@ const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>vo
         className="w-full min-h-[100vh] flex items-center justify-center"
         style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
       >
-        <div className="bg-white p-6 w-[80%] flex flex-col md:w-1/3 rounded-xl">
+        <div
+          className="bg-white relative p-6 w-[80%] flex flex-col md:w-[50%] 
+        rounded-xl"
+        >
           <div className="w-full text-center my-2 font-semibold">
             Crop your photo
           </div>
-          {!!imgSrc && (
-            <ReactCrop
-              crop={crop}
-              onChange={(_, percentCrop) => setCrop(percentCrop)}
-              onComplete={(c) => setCompletedCrop(c)}
-              aspect={aspect}
-            >
-              <img
-                ref={imgRef}
-                alt="Crop me"
-                src={imgSrc}
-                style={{ transform: `scale(${scale}) rotate(${rotate}deg)` }}
-                onLoad={onImageLoad}
-              />
-            </ReactCrop>
-          )}
 
+          <div className="w-full flex">
+            <div className="w-1/2">
+              {!!imgSrc && (
+                <ReactCrop
+                  crop={crop}
+                  onChange={(_, percentCrop) => setCrop(percentCrop)}
+                  onComplete={(c) => setCompletedCrop(c)}
+                  aspect={aspect}
+                >
+                  <img
+                    ref={imgRef}
+                    alt="Crop me"
+                    className={``}
+                    src={imgSrc}
+                    onLoad={onImageLoad}
+                  />
+                </ReactCrop>
+              )}
+            </div>
+            <div className="w-1/2">
+              {!!completedCrop ? (
+                <>
+                  <div className="w-full h-full flex flex-col items-center justify-center">
+                    <div className="w-full text-center font-semibold text-sm mb-4">
+                      Your crop preview
+                    </div>
+                    <canvas
+                      ref={previewCanvasRef}
+                      className=""
+                      style={{
+                        objectFit: "contain",
+                        width: completedCrop.width,
+                        height: completedCrop.height,
+                      }}
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex flex-col justify-center items-center w-full h-full">
+                    <div className="w-full text-center text-gray-500">Your preview will appear here</div>
+                    <IoMdPhotos className="m-12" size={100} color="gray"/>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
           <div className="w-full flex items-center justify-between mt-3 p-4">
-            <button onClick={hideCropper} className="text-[#1b66c8] hover:shadow w-1/2 border text-sm py-2 px-6 rounded">
+            <button
+              onClick={() => setFinishedCropping(false)}
+              className="text-[#1b66c8] hover:shadow w-1/2 border text-sm py-2 px-6 rounded"
+            >
               Cancel
             </button>
-            <button className="bg-[#1b66c8] hover:shadow w-1/2 ms-6 text-white text-sm py-2 px-6 rounded">
+            <button
+              onClick={handleShowFinishedCrop}
+              className="bg-[#1b66c8] hover:shadow w-1/2 ms-6 text-white text-sm py-2 px-6 rounded"
+            >
               Finish
             </button>
           </div>
         </div>
       </div>
-{/* 
-      <div className="App">
-        <div className="Crop-Controls">
-          <input type="file" accept="image/*" onChange={onSelectFile} />
-          <div>
-            <label htmlFor="scale-input">Scale: </label>
-            <input
-              id="scale-input"
-              type="number"
-              step="0.1"
-              value={scale}
-              disabled={!imgSrc}
-              onChange={(e) => setScale(Number(e.target.value))}
-            />
-          </div>
-        </div> */}
-        {!!imgSrc && (
-          <ReactCrop
-            crop={crop}
-            onChange={(_, percentCrop) => setCrop(percentCrop)}
-            onComplete={(c) => setCompletedCrop(c)}
-            aspect={aspect}
-          >
-            <img
-              ref={imgRef}
-              alt="Crop me"
-              src={imgSrc}
-              style={{ transform: `scale(${scale}) rotate(${rotate}deg)` }}
-              onLoad={onImageLoad}
-            />
-          </ReactCrop>
-        )}
-        {!!completedCrop && (
-          <>
-            <div>
-              <canvas
-                ref={previewCanvasRef}
-                style={{
-                  border: "1px solid black",
-                  objectFit: "contain",
-                  width: completedCrop.width,
-                  height: completedCrop.height,
-                }}
-              />
-            </div>
-            <div>
-              <button onClick={onDownloadCropClick}>Download Crop</button>
-              <a
-                ref={hiddenAnchorRef}
-                download
-                style={{
-                  position: "absolute",
-                  top: "-200vh",
-                  visibility: "hidden",
-                }}
-              >
-                Hidden download
-              </a>
-            </div>
-          </>
-        )}
-      
     </>
   );
 };
