@@ -4,6 +4,9 @@ import { FaUser, FaInfoCircle } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import LineLoader from "@/components/loaders/LineLoader";
+import {ref, update} from "firebase/database"
+import { auth, database } from "@/config/firebase";
+import { toast } from "react-toastify";
 
 const UpdateProfile = () => {
   const [focused, setFocused] = useState<string>("");
@@ -16,6 +19,7 @@ const UpdateProfile = () => {
   const [loading,setLoading]=useState<boolean>(false)
 
   const handleSetData=(e:ChangeEvent<HTMLInputElement>)=>{
+    clearErrors()
     setData((prevData)=>({
       ...prevData,
       [e.target.name]:e.target.value
@@ -24,16 +28,44 @@ const UpdateProfile = () => {
 
 
   const handleValidations=()=>{
-    setErrors([]);
+    clearErrors()
     if(!data.username){
-      setErrors([...errors,"Please enter your username"])
+      setErrors(["Please enter your username"])
+    }else{
+      handleUpdateUsername()
     }
   }
 
+  const handleUpdateUsername=async()=>{
+    try {
+      setLoading(true)
+     await update(ref(database, "/users/" + auth.currentUser?.uid), {
+       username: data.username,
+     });
+    toast.success("Profile updated successfully")
+     
+    } catch (error) {
+      let errorMessage:string="";
+      if(error instanceof Error){
+        errorMessage=error.message
+      }else{
+        errorMessage="Something went wrong, try again later"
+      }
+      setErrors([...errors,errorMessage]);
+      
+    }finally{
+      setLoading(false)
+    }
+  }
+
+  const clearErrors=()=>{
+    setErrors([])
+  }
+
   return (
-    <div className="w-[80%] mx-auto md:w-1/3">
+    <div className="w-[80%] mx-auto m-4 md:w-1/3 rounded-lg p-0 relative border">
       {loading && <LineLoader overlay={true} />}
-      <div className="min-h-[100vh] border m-4 p-6 rounded-lg z-50 space-y-8 md:space-y-5  flex  items-center  pt-16 flex-col">
+      <div className="min-h-[80vh]  p-6 z-20 space-y-8 md:space-y-5  flex  items-center  pt-16 flex-col">
         <div className="bg-[#5ab9c1] rounded-full p-8  z-50 relative">
           <FaUser size={40} color="#081314" />
 
