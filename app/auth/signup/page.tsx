@@ -113,6 +113,7 @@ const SignUp = () => {
       router.push("/profile/update");
 
     } catch (error) {
+      setLoading(false);
       if (error instanceof Error) {
         console.log("error");
         console.log(error?.message);
@@ -125,7 +126,7 @@ const SignUp = () => {
         }));
       }
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
