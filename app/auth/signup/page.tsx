@@ -110,7 +110,7 @@ const SignUp = () => {
         photo:"",
       })
 
-      router.push("/mail");
+      router.push("/profile/update");
 
     } catch (error) {
       if (error instanceof Error) {
