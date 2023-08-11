@@ -10,25 +10,26 @@ import ReactCrop, {
 import { canvasPreview } from "./canvasPreview";
 import { useDebounceEffect } from "./useDebounceEffect";
 
-function centerAspectCrop(
-  mediaWidth: number,
-  mediaHeight: number,
-  aspect: number
-) {
-  return centerCrop(
-    makeAspectCrop(
-      {
-        unit: "%",
-        width: 90,
-      },
-      aspect,
-      mediaWidth,
-      mediaHeight
-    ),
-    mediaWidth,
-    mediaHeight
-  );
-}
+// function centerAspectCrop(
+//   mediaWidth: number,
+//   mediaHeight: number,
+//   aspect: number
+// ) {
+//   return centerCrop(
+//     makeAspectCrop(
+//       {
+//         unit: "%",
+//         width: 50,
+//         height:50,
+//       },
+//       aspect,
+//       mediaWidth,
+//       mediaHeight
+//     ),
+//     mediaWidth,
+//     mediaHeight
+//   );
+// }
 
 const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>void}) => {
   const [crop, setCrop] = useState<Crop>({
@@ -47,7 +48,7 @@ const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>vo
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>();
   const [scale, setScale] = useState(1);
   const [rotate, setRotate] = useState(0);
-  const [aspect, setAspect] = useState<number | undefined>(16 / 9);
+  const [aspect, setAspect] = useState<number | undefined>();
 
   // function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
   //   if (e.target.files && e.target.files.length > 0) {
@@ -71,7 +72,7 @@ const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>vo
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     if (aspect) {
       const { width, height } = e.currentTarget;
-      setCrop(centerAspectCrop(width, height, aspect));
+      // setCrop(centerAspectCrop(width, height, aspect));
     }
   }
 
@@ -115,18 +116,18 @@ const CropImage = ({ imageSrc,hideCropper }: { imageSrc: any ,hideCropper:()=>vo
     [completedCrop, scale, rotate]
   );
 
-  function handleToggleAspectClick() {
-    if (aspect) {
-      setAspect(undefined);
-    } else if (imgRef.current) {
-      const { width, height } = imgRef.current;
-      setAspect(16 / 9);
-      const newCrop = centerAspectCrop(width, height, 16 / 9);
-      setCrop(newCrop);
-      // Updates the preview
-      setCompletedCrop(convertToPixelCrop(newCrop, width, height));
-    }
-  }
+  // function handleToggleAspectClick() {
+  //   if (aspect) {
+  //     setAspect(undefined);
+  //   } else if (imgRef.current) {
+  //     const { width, height } = imgRef.current;
+  //     setAspect(16 / 9);
+  //     const newCrop = centerAspectCrop(width, height, 16 / 9);
+  //     setCrop(newCrop);
+  //     // Updates the preview
+  //     setCompletedCrop(convertToPixelCrop(newCrop, width, height));
+  //   }
+  // }
 
   return (
     <>
