@@ -24,8 +24,16 @@ type AuthSignInError = {
   errorMessage?: string;
 };
 
+
+type AuthUser={
+  name:string;
+  email:string;
+  username?:string;
+  photo?:string;
+}
+
 type SetAuthUser = {
-  user: any;
+  user: AuthUser|null;
   isAuthenticated: boolean;
 };
 
