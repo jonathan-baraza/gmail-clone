@@ -9,8 +9,13 @@ import ReactCrop, {
 } from "react-image-crop";
 import { canvasPreview } from "./canvasPreview";
 import { useDebounceEffect } from "./useDebounceEffect";
-import {IoMdPhotos} from "react-icons/io"
+import { IoMdPhotos } from "react-icons/io";
 import LineLoader from "../loaders/LineLoader";
+import { auth, storage,database } from "@/config/firebase";
+import { ref, uploadBytes ,getDownloadURL} from "firebase/storage";
+import {  ref as DbRef,update } from "firebase/database";
+import { toast } from "react-toastify";
+import { Console } from "console";
 
 // function centerAspectCrop(
 //   mediaWidth: number,
@@ -130,20 +135,45 @@ const CropImage = ({
 
   const handleUpdate = async () => {
     setLoading(true);
-    if(previewCanvasRef.current){
-      const dataURL = previewCanvasRef.current?.toDataURL();
-      const blob = await fetch(dataURL).then((response) => response.blob());
-      console.log("here it is");
-      console.log(typeof blob)
-      console.log(blob)
+    if (previewCanvasRef.current) {
+      try {
+        //get blob from canvas
+        const dataURL = previewCanvasRef.current?.toDataURL();
+        const blob = await fetch(dataURL).then((response) => response.blob());
+
+        //storage bucket references i.e. 'userid.jpg'
+        const storageRef = ref(
+          storage,
+          "profiles/" + auth.currentUser?.uid + ".jpg"
+        );
+
+        //upload photo
+        uploadBytes(storageRef, blob);
+
+        //get download URL
+        const downloadURL=await getDownloadURL(storageRef);
+
+        //update profile with download url
+         await update(DbRef(database, "/users/" + auth.currentUser?.uid), {
+           photo:downloadURL,
+         });
+        toast.success("Profile photo updated successfully")
+        hideCropper();
+      } catch (error) {
+        setLoading(false);
+        let errorMessage;
+        if (error instanceof Error) {
+          errorMessage = error.message;
+        } else {
+          errorMessage = "Something went wrong, try again later";
+        }
+        hideCropper();
+        toast.error(errorMessage);
+      }
     }
-   
   };
 
-
-  const getImageFromCanvas=async()=>{
-    
-  }
+  const getImageFromCanvas = async () => {};
 
   // function handleToggleAspectClick() {
   //   if (aspect) {
