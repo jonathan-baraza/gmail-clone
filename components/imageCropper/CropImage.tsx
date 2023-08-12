@@ -41,9 +41,11 @@ import { Console } from "console";
 const CropImage = ({
   imageSrc,
   hideCropper,
+  refetchUserProfile
 }: {
   imageSrc: any;
   hideCropper: () => void;
+  refetchUserProfile:()=>void;
 }) => {
   const [crop, setCrop] = useState<Crop>({
     unit: "%",
@@ -157,7 +159,8 @@ const CropImage = ({
          await update(DbRef(database, "/users/" + auth.currentUser?.uid), {
            photo:downloadURL,
          });
-        toast.success("Profile photo updated successfully")
+        toast.success("Profile photo updated successfully");
+        refetchUserProfile();
         hideCropper();
       } catch (error) {
         setLoading(false);
