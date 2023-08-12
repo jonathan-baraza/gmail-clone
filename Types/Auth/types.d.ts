@@ -38,6 +38,7 @@ type SetAuthUser = {
 };
 
 type ProfileUpdateFields={
-  photo:string,
+  name?:string,
   username:string
+  photo:string,
 }
