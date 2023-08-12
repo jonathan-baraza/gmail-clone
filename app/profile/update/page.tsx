@@ -4,10 +4,11 @@ import { FaUser, FaInfoCircle } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import LineLoader from "@/components/loaders/LineLoader";
-import { ref, update } from "firebase/database";
+import { ref, update, onValue } from "firebase/database";
 import { auth, database } from "@/config/firebase";
 import { toast } from "react-toastify";
 import CropImage from "@/components/imageCropper/CropImage";
+import useCustomErrorHandler from "@/hooks/useCustomErrorHandler";
 
 const UpdateProfile = () => {
   const router: any = useRouter();
@@ -20,7 +21,7 @@ const UpdateProfile = () => {
   });
 
   const [errors, setErrors] = useState<String[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [showCropper, setShowCropper] = useState<boolean>(false);
   const [imageSrc, setImageSrc] = useState<File>();
 
@@ -72,6 +73,34 @@ const UpdateProfile = () => {
   const clearErrors = () => {
     setErrors([]);
   };
+
+  const fetchUserProfile = async () => {
+    try {
+      //user profile ref
+      const starCountRef = ref(database, "users/" + auth.currentUser?.uid);
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log("profile data");
+        console.log(data);
+      });
+    } catch (error) {
+      //custom error handler
+      let msg;
+      if (error instanceof Error) {
+        msg = error.message;
+      } else {
+        msg = "Something went wrong, try again later";
+      }
+
+      toast.error(msg);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
 
   return (
     <>
