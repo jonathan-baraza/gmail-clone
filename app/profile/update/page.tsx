@@ -121,7 +121,7 @@ const UpdateProfile = () => {
           <div className="min-h-[80vh]  p-6 z-20 space-y-8 md:space-y-5  flex  items-center  pt-16 flex-col">
             <div
               className={`bg-[#5ab9c1] w-[120px] h-[120px] rounded-full ${
-                !user?.photo ? "p-8":"p-0"
+                !user?.photo ? "p-8" : "p-0"
               }  relative flex items-center justify-center `}
             >
               {user?.photo ? (
