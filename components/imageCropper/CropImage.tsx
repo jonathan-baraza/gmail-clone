@@ -10,6 +10,7 @@ import ReactCrop, {
 import { canvasPreview } from "./canvasPreview";
 import { useDebounceEffect } from "./useDebounceEffect";
 import {IoMdPhotos} from "react-icons/io"
+import LineLoader from "../loaders/LineLoader";
 
 // function centerAspectCrop(
 //   mediaWidth: number,
@@ -57,7 +58,7 @@ const CropImage = ({
   const [rotate, setRotate] = useState(0);
   const [aspect, setAspect] = useState<number | undefined>();
 
-  const [finishedCropping, setFinishedCropping] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   // function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
   //   if (e.target.files && e.target.files.length > 0) {
@@ -127,9 +128,22 @@ const CropImage = ({
     [completedCrop, scale, rotate]
   );
 
-  const handleShowFinishedCrop = async () => {
-    setFinishedCropping(true);
+  const handleUpdate = async () => {
+    setLoading(true);
+    if(previewCanvasRef.current){
+      const dataURL = previewCanvasRef.current?.toDataURL();
+      const blob = await fetch(dataURL).then((response) => response.blob());
+      console.log("here it is");
+      console.log(typeof blob)
+      console.log(blob)
+    }
+   
   };
+
+
+  const getImageFromCanvas=async()=>{
+    
+  }
 
   // function handleToggleAspectClick() {
   //   if (aspect) {
@@ -154,6 +168,7 @@ const CropImage = ({
           className="bg-white relative p-6 w-[80%] flex flex-col md:w-[50%] 
         rounded-xl"
         >
+          {loading && <LineLoader overlay={true} />}
           <div className="w-full text-center mt-4 mb-6 font-semibold">
             Crop your photo
           </div>
@@ -186,6 +201,7 @@ const CropImage = ({
                     </div>
                     <canvas
                       ref={previewCanvasRef}
+                      id="canvasPreview"
                       className=""
                       style={{
                         objectFit: "contain",
@@ -198,8 +214,10 @@ const CropImage = ({
               ) : (
                 <>
                   <div className="flex flex-col justify-center items-center w-full h-full">
-                    <div className="w-full text-center text-gray-500 text-sm">Your preview will appear here</div>
-                    <IoMdPhotos className="m-6" size={100} color="gray"/>
+                    <div className="w-full text-center text-gray-500 text-sm">
+                      Your preview will appear here
+                    </div>
+                    <IoMdPhotos className="m-6" size={100} color="gray" />
                   </div>
                 </>
               )}
@@ -207,16 +225,16 @@ const CropImage = ({
           </div>
           <div className="w-full flex items-center justify-between mt-3 p-4">
             <button
-              onClick={() => setFinishedCropping(false)}
+              onClick={hideCropper}
               className="text-[#1b66c8] hover:shadow w-1/2 border text-sm py-2 px-6 rounded"
             >
               Cancel
             </button>
             <button
-              onClick={handleShowFinishedCrop}
+              onClick={handleUpdate}
               className="bg-[#1b66c8] hover:shadow w-1/2 ms-6 text-white text-sm py-2 px-6 rounded"
             >
-              Finish
+              Update photo
             </button>
           </div>
         </div>
