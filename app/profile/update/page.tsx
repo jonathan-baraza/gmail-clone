@@ -9,9 +9,13 @@ import { auth, database } from "@/config/firebase";
 import { toast } from "react-toastify";
 import CropImage from "@/components/imageCropper/CropImage";
 import useCustomErrorHandler from "@/hooks/useCustomErrorHandler";
+import { updateUser } from "@/features/slices/AuthSlice";
+import { useAppDispatch, useAppSelector } from "@/hooks/reduxHooks";
 
 const UpdateProfile = () => {
   const router: any = useRouter();
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.auth);
   const fileInput = useRef<HTMLInputElement>(null);
   const [focused, setFocused] = useState<string>("");
   const [photo, setPhoto] = useState<File>();
@@ -79,9 +83,15 @@ const UpdateProfile = () => {
       //user profile ref
       const starCountRef = ref(database, "users/" + auth.currentUser?.uid);
       onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log("profile data");
-        console.log(data);
+        const data: AuthUser = snapshot.val();
+
+        const userUpdated: AuthUser = {
+          name: data.name,
+          email: auth.currentUser?.email!,
+          photo: data.photo,
+          username: data.username,
+        };
+        dispatch(updateUser(userUpdated));
       });
     } catch (error) {
       //custom error handler
@@ -107,9 +117,22 @@ const UpdateProfile = () => {
       {!showCropper ? (
         <div className="w-[80%] mx-auto m-4 md:w-1/3 rounded-lg p-0 relative border">
           {loading && <LineLoader overlay={true} />}
+
           <div className="min-h-[80vh]  p-6 z-20 space-y-8 md:space-y-5  flex  items-center  pt-16 flex-col">
-            <div className="bg-[#5ab9c1] rounded-full p-8  z-50 relative">
-              <FaUser size={40} color="#081314" />
+            <div
+              className={`bg-[#5ab9c1] w-[120px] h-[120px] rounded-full ${
+                !user?.photo ? "p-8":"p-0"
+              }  relative flex items-center justify-center `}
+            >
+              {user?.photo ? (
+                <img
+                  alt="user profile"
+                  src={user?.photo}
+                  className=" w-full h-full rounded-full  "
+                />
+              ) : (
+                <FaUser size={40} color="#081314" />
+              )}
               <input
                 ref={fileInput}
                 type="file"
@@ -181,6 +204,7 @@ const UpdateProfile = () => {
       ) : (
         <CropImage
           imageSrc={imageSrc}
+          refetchUserProfile={fetchUserProfile}
           hideCropper={() => setShowCropper(false)}
         />
       )}
