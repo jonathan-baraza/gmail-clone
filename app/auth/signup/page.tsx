@@ -6,9 +6,14 @@ import { useRouter } from "next/navigation";
 import LineLoader from "@/components/loaders/LineLoader";
 
 //Firebase auth
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword,GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 import { auth , database} from "@/config/firebase";
-import {ref,set} from "firebase/database"
+import {ref,set,update} from "firebase/database"
+import { toast } from "react-toastify";
+import CustomErrorHandler from "@/utils/customErrorHandler";
+
+//google provider init
+const provider = new GoogleAuthProvider();
 
 const SignUp = () => {
   const router = useRouter();
@@ -139,6 +144,31 @@ const SignUp = () => {
       errorMessage: "",
     });
   };
+
+  const handleGoogleSignIn=async()=>{
+    setLoading(true)
+    try {
+      const response=await signInWithPopup(auth,provider);
+
+      const uid=response.user.uid;
+
+      const userFields: ProfileUpdateFields = {
+        name: response.user.displayName!,
+        username: "",
+        photo: response.user.photoURL || "",
+      };
+
+       set(ref(database, "users/" + uid), userFields);
+
+       router.push("/profile/update");
+      
+    } catch (error) {
+      setLoading(false);
+      CustomErrorHandler(error);
+      
+    }
+
+  }
 
   return (
     <div className="w-full min-h-[100vh] flex items-center justify-center ">
@@ -310,7 +340,7 @@ const SignUp = () => {
           </ul>
         </div>
         <div className="mt-8 flex justify-between items-center w-full">
-          <div className=" text-[#1a73e8] hover:cursor-pointer hover:bg-[#f1f7fe] p-2  text-sm font-bold">
+          <div onClick={handleGoogleSignIn} className=" text-[#1a73e8] hover:cursor-pointer hover:bg-[#f1f7fe] p-2  text-sm font-bold">
             Sign up with google (lol)
           </div>
           <button
