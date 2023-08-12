@@ -150,7 +150,7 @@ const CropImage = ({
         );
 
         //upload photo
-        uploadBytes(storageRef, blob);
+        await uploadBytes(storageRef, blob);
 
         //get download URL
         const downloadURL=await getDownloadURL(storageRef);
@@ -163,6 +163,8 @@ const CropImage = ({
         refetchUserProfile();
         hideCropper();
       } catch (error) {
+        console.log("upload error");
+        console.log(error)
         setLoading(false);
         let errorMessage;
         if (error instanceof Error) {
