@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/hooks/reduxHooks";
+import MinMenu from "@/components/mailPage/MinMenu";
 function Mail() {
   const { user, isAuthenticated } = useAppSelector((state) => state.auth);
   const router = useRouter();
@@ -36,16 +37,8 @@ function Mail() {
       {pageLoading ? (
         <div>Page Loading {String(isAuthenticated)}</div>
       ) : (
-        <div className="w-full h-[100vh] flex flex-col items-center justify-center">
-          <h1 className="font-bold text-3xl">
-            Welcome {user?.username} to you mail page
-          </h1>
-          <button
-            onClick={handleSignOut}
-            className="text-white bg-[#1a73e8] hover:bg-[#0d4b9c] hover:cursor-pointer rounded text-sm px-6 py-3 hover:shadow mt-6"
-          >
-            Sign out
-          </button>
+        <div className="w-full h-[100vh] flex ">
+          <MinMenu/>
         </div>
       )}
     </>
