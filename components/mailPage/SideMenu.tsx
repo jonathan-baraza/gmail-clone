@@ -5,7 +5,7 @@ const SideMenu = () => {
 
 
   return (
-    <div className="w-[19%] h-full ">
+    <div className="w-[18%] h-full ">
       <div className=" pt-4">
         <div className="ml-5 flex items-center space-x-2">
           <img src={"/gmail.svg"} className="h-[35px]" />
@@ -17,12 +17,12 @@ const SideMenu = () => {
             <HiPencil size={23} />
             <span className="text-[16px]">Compose</span>
           </div>
-          <div className="flex items-center justify-between px-2 bg-[#d3e3fd] hover:cursor-pointer mt-4 rounded-2xl px-3 py-1">
+          <div className="flex items-center justify-between px-2 bg-[#d3e3fd] hover:cursor-pointer mt-4 rounded-3xl px-4 py-[6px] text-[#041e49]">
             <span className="flex items-center">
-              <HiInbox className="" size={20} />
-              <span className="ml-3 text-sm">Inbox</span>
+              <HiInbox className="" size={21} />
+              <span className="ml-3 text-[15px] font-bold">Inbox</span>
             </span>
-            <span className="text-sm">746</span>
+            <span className="text-xs font-semibold">746</span>
           </div>
         </div>
       </div>
