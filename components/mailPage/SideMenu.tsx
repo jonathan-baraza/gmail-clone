@@ -1,5 +1,5 @@
 import React from "react";
-import { HiPencil, HiInbox } from "react-icons/hi";
+import { HiPencil, HiInbox, HiOutlineStar } from "react-icons/hi";
 
 const SideMenu = () => {
 
@@ -17,12 +17,22 @@ const SideMenu = () => {
             <HiPencil size={23} />
             <span className="text-[16px]">Compose</span>
           </div>
+
+          {/* Make Reusable */}
           <div className="flex items-center justify-between px-2 bg-[#d3e3fd] hover:cursor-pointer mt-4 rounded-3xl px-4 py-[6px] text-[#041e49]">
             <span className="flex items-center">
               <HiInbox className="" size={21} />
               <span className="ml-3 text-[15px] font-bold">Inbox</span>
             </span>
             <span className="text-xs font-semibold">746</span>
+          </div>
+          {/* Starred */}
+          <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
+            <span className="flex items-center">
+              <HiOutlineStar className="" size={20} />
+              <span className="ml-3 text-[15px]">Starred</span>
+            </span>
+            <span className="text-xs font-semibold"></span>
           </div>
         </div>
       </div>
