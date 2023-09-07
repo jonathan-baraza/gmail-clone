@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/hooks/reduxHooks";
 import MinMenu from "@/components/mailPage/MinMenu";
+import SideMenu from "@/components/mailPage/SideMenu";
 function Mail() {
   const { user, isAuthenticated } = useAppSelector((state) => state.auth);
   const router = useRouter();
@@ -37,8 +38,9 @@ function Mail() {
       {pageLoading ? (
         <div>Page Loading {String(isAuthenticated)}</div>
       ) : (
-        <div className="w-full h-[100vh] flex ">
-          <MinMenu/>
+        <div className="w-full h-[100vh] flex bg-[#f6f8fc] ">
+          <MinMenu />
+          <SideMenu/>
         </div>
       )}
     </>
