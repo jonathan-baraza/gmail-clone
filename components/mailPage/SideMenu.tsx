@@ -5,6 +5,7 @@ import {
   HiOutlineStar,
   HiOutlineDocument,
   HiOutlineUsers,
+  HiOutlineInformationCircle,
 } from "react-icons/hi";
 import { WiTime4 } from "react-icons/wi";
 import {
@@ -100,6 +101,30 @@ const SideMenu = () => {
             <span className="flex items-center">
               <HiOutlineUsers className="" size={18} />
               <span className="ml-3 text-[14px]">Social</span>
+            </span>
+            <span className="text-xs font-semibold"></span>
+          </div>
+          {/* Updates */}
+          <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
+            <span className="flex items-center">
+              <HiOutlineInformationCircle className="" size={18} />
+              <span className="ml-3 text-[14px]">Updates</span>
+            </span>
+            <span className="text-xs font-semibold"></span>
+          </div>
+          {/* Forums */}
+          <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
+            <span className="flex items-center">
+              <HiOutlineUsers className="" size={18} />
+              <span className="ml-3 text-[14px]">Forums</span>
+            </span>
+            <span className="text-xs font-semibold"></span>
+          </div>
+          {/* Promotions */}
+          <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
+            <span className="flex items-center">
+              <HiOutlineUsers className="" size={18} />
+              <span className="ml-3 text-[14px]">Promotions</span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
