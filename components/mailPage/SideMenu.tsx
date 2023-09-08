@@ -17,6 +17,8 @@ import {
 import { VscSend } from "react-icons/vsc";
 import { GrDocument } from "react-icons/gr";
 import { AiOutlineCaretDown } from "react-icons/ai";
+import { PiChatsDuotone } from "react-icons/pi";
+import { BsTag } from "react-icons/bs";
 
 const SideMenu = () => {
   const [categoriesShown,setCategoriesShown]=useState<boolean>(false);
@@ -87,9 +89,8 @@ const SideMenu = () => {
             <span className="flex  items-center">
               <span className="flex items-center">
                 <AiOutlineCaretDown className="absolute left-1" size={10} />
-              <MdLabelOutline className="" size={23} />
+                <MdLabelOutline className="" size={23} />
               </span>
-              
 
               <span className="ml-3 text-[14px] ">Categories</span>
             </span>
@@ -115,7 +116,7 @@ const SideMenu = () => {
           {/* Forums */}
           <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
             <span className="flex items-center">
-              <HiOutlineUsers className="" size={18} />
+              <PiChatsDuotone className="" size={18} />
               <span className="ml-3 text-[14px]">Forums</span>
             </span>
             <span className="text-xs font-semibold"></span>
@@ -123,7 +124,7 @@ const SideMenu = () => {
           {/* Promotions */}
           <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
             <span className="flex items-center">
-              <HiOutlineUsers className="" size={18} />
+              <BsTag className="" size={18} />
               <span className="ml-3 text-[14px]">Promotions</span>
             </span>
             <span className="text-xs font-semibold"></span>
