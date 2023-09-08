@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import {
   HiPencil,
   HiInbox,
@@ -6,11 +6,17 @@ import {
   HiOutlineDocument,
 } from "react-icons/hi";
 import { WiTime4 } from "react-icons/wi";
-import { MdLabelImportantOutline } from "react-icons/md";
+import {
+  MdLabelImportantOutline,
+  MdLabelOutline,
+  MdOutlineExpandLess,
+  MdOutlineExpandMore,
+} from "react-icons/md";
 import { VscSend } from "react-icons/vsc";
 import { GrDocument } from "react-icons/gr";
 
 const SideMenu = () => {
+  const [categoriesShown,setCategoriesShown]=useState<boolean>(false);
   return (
     <div className="w-[18%] h-full ">
       <div className=" pt-4">
@@ -29,7 +35,7 @@ const SideMenu = () => {
           <div className="flex items-center justify-between px-2 bg-[#d3e3fd] hover:cursor-pointer mt-4 rounded-3xl px-4 py-[6px] text-[#041e49]">
             <span className="flex items-center">
               <HiInbox className="" size={21} />
-              <span className="ml-3 text-[15px] font-bold">Inbox</span>
+              <span className="ml-3 text-[14px] font-bold">Inbox</span>
             </span>
             <span className="text-xs font-semibold">746</span>
           </div>
@@ -37,7 +43,7 @@ const SideMenu = () => {
           <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
             <span className="flex items-center">
               <HiOutlineStar className="" size={20} />
-              <span className="ml-3 text-[15px]">Starred</span>
+              <span className="ml-3 text-[14px]">Starred</span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
@@ -45,7 +51,7 @@ const SideMenu = () => {
           <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
             <span className="flex items-center">
               <WiTime4 className="" size={20} />
-              <span className="ml-3 text-[15px]">Snoozed</span>
+              <span className="ml-3 text-[14px]">Snoozed</span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
@@ -53,7 +59,7 @@ const SideMenu = () => {
           <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
             <span className="flex items-center">
               <MdLabelImportantOutline className="" size={20} />
-              <span className="ml-3 text-[15px]">Important</span>
+              <span className="ml-3 text-[14px]">Important</span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
@@ -61,7 +67,7 @@ const SideMenu = () => {
           <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
             <span className="flex items-center">
               <VscSend className="" size={20} />
-              <span className="ml-3 text-[15px]">Sent</span>
+              <span className="ml-3 text-[14px]">Sent</span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
@@ -69,7 +75,42 @@ const SideMenu = () => {
           <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
             <span className="flex items-center">
               <HiOutlineDocument className="" size={20} />
-              <span className="ml-3 text-[15px]">Drafts</span>
+              <span className="ml-3 text-[14px]">Drafts</span>
+            </span>
+            <span className="text-xs font-semibold"></span>
+          </div>
+          {/* Categories */}
+          <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
+            <span className="flex items-center">
+              <MdLabelOutline className="" size={20} />
+
+              <span className="ml-3 text-[14px] font-bold">Categories</span>
+            </span>
+            <span className="text-xs font-semibold"></span>
+          </div>
+          {/* Categories toggle */}
+          {/* Social */}
+          <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
+            <span className="flex items-center">
+              <HiOutlineDocument className="" size={20} />
+              <span className="ml-3 text-[14px]">Drafts</span>
+            </span>
+            <span className="text-xs font-semibold"></span>
+          </div>
+          {/* Show more */}
+          <div
+            onClick={() => setCategoriesShown(!categoriesShown)}
+            className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]"
+          >
+            <span className="flex items-center">
+              {!categoriesShown ? (
+                <MdOutlineExpandMore className="" size={20} />
+              ) : (
+                <MdOutlineExpandLess className="" size={20} />
+              )}
+              <span className="ml-3 text-[14px] ">
+                {!categoriesShown ? "More" : "Less"}
+              </span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
@@ -80,3 +121,5 @@ const SideMenu = () => {
 };
 
 export default SideMenu;
+
+//icons in order
