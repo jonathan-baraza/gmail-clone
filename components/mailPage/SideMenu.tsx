@@ -11,6 +11,7 @@ import { WiTime4 } from "react-icons/wi";
 import {
   MdLabelImportantOutline,
   MdLabelOutline,
+  MdOutlineAdd,
   MdOutlineExpandLess,
   MdOutlineExpandMore,
 } from "react-icons/md";
@@ -103,7 +104,7 @@ const SideMenu = () => {
               <HiOutlineUsers className="" size={18} />
               <span className="ml-3 text-[14px]">Social</span>
             </span>
-            <span className="text-xs font-semibold"></span>
+            <span className="text-xs ">1,833</span>
           </div>
           {/* Updates */}
           <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
@@ -111,7 +112,7 @@ const SideMenu = () => {
               <HiOutlineInformationCircle className="" size={18} />
               <span className="ml-3 text-[14px]">Updates</span>
             </span>
-            <span className="text-xs font-semibold"></span>
+            <span className="text-xs ">271</span>
           </div>
           {/* Forums */}
           <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
@@ -119,7 +120,7 @@ const SideMenu = () => {
               <PiChatsDuotone className="" size={18} />
               <span className="ml-3 text-[14px]">Forums</span>
             </span>
-            <span className="text-xs font-semibold"></span>
+            <span className="text-xs "></span>
           </div>
           {/* Promotions */}
           <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
@@ -127,7 +128,7 @@ const SideMenu = () => {
               <BsTag className="" size={18} />
               <span className="ml-3 text-[14px]">Promotions</span>
             </span>
-            <span className="text-xs font-semibold"></span>
+            <span className="text-xs ">1,286</span>
           </div>
           {/* Show more */}
           <div
@@ -145,6 +146,12 @@ const SideMenu = () => {
               </span>
             </span>
             <span className="text-xs font-semibold"></span>
+          </div>
+          <div className="flex items-center font-semibold text-[#444746] w-full justify-between px-2 mt-4">
+            <span className="text-base">Labels</span>
+            <div className="hover:bg-[#eaebef] rounded-full hover:cursor-pointer p-2 flex items-center justify-center">
+              <MdOutlineAdd size={20} />
+            </div>
           </div>
         </div>
       </div>
