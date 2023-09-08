@@ -4,6 +4,7 @@ import {
   HiInbox,
   HiOutlineStar,
   HiOutlineDocument,
+  HiOutlineUsers,
 } from "react-icons/hi";
 import { WiTime4 } from "react-icons/wi";
 import {
@@ -14,6 +15,7 @@ import {
 } from "react-icons/md";
 import { VscSend } from "react-icons/vsc";
 import { GrDocument } from "react-icons/gr";
+import { AiOutlineCaretDown } from "react-icons/ai";
 
 const SideMenu = () => {
   const [categoriesShown,setCategoriesShown]=useState<boolean>(false);
@@ -82,7 +84,11 @@ const SideMenu = () => {
           {/* Categories */}
           <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
             <span className="flex items-center">
-              <MdLabelOutline className="" size={20} />
+              <span className="flex items-center">
+                <AiOutlineCaretDown className="" size={10} />
+              <MdLabelOutline className="" size={23} />
+              </span>
+              
 
               <span className="ml-3 text-[14px] font-bold">Categories</span>
             </span>
@@ -90,10 +96,10 @@ const SideMenu = () => {
           </div>
           {/* Categories toggle */}
           {/* Social */}
-          <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
+          <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
             <span className="flex items-center">
-              <HiOutlineDocument className="" size={20} />
-              <span className="ml-3 text-[14px]">Drafts</span>
+              <HiOutlineUsers className="" size={18} />
+              <span className="ml-3 text-[14px]">Social</span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
