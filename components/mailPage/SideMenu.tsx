@@ -82,15 +82,15 @@ const SideMenu = () => {
             <span className="text-xs font-semibold"></span>
           </div>
           {/* Categories */}
-          <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
-            <span className="flex items-center">
+          <div className="flex items-center relative hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
+            <span className="flex  items-center">
               <span className="flex items-center">
-                <AiOutlineCaretDown className="" size={10} />
+                <AiOutlineCaretDown className="absolute left-1" size={10} />
               <MdLabelOutline className="" size={23} />
               </span>
               
 
-              <span className="ml-3 text-[14px] font-bold">Categories</span>
+              <span className="ml-3 text-[14px] ">Categories</span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
