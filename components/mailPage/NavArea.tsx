@@ -6,7 +6,11 @@ const NavArea = () => {
   return (
     <div className="w-full py-2">
       <div>
-        <div className={`flex items-center px-[6px] bg-[#eaf1fb] w-[70%]  rounded-3xl`}>
+        <div
+          className={`flex items-center px-[6px] ${
+            inputActive ? "bg-white" : "bg-[#eaf1fb]"
+          } w-[70%]  rounded-3xl`}
+        >
           <div className="mr-1 hover:cursor-pointer hover:bg-[#dde3ec] p-2 rounded-full">
             <HiOutlineSearch color={"#5f6368"} size={20} />
           </div>
