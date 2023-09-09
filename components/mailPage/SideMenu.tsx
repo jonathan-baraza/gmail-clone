@@ -23,6 +23,7 @@ import { BsTag } from "react-icons/bs";
 
 const SideMenu = () => {
   const [categoriesShown,setCategoriesShown]=useState<boolean>(false);
+  const [moreShown,setMoreShown]=useState<boolean>(false);
   return (
     <div className="w-[18%] h-full ">
       <div className=" pt-4">
@@ -132,17 +133,17 @@ const SideMenu = () => {
           </div>
           {/* Show more */}
           <div
-            onClick={() => setCategoriesShown(!categoriesShown)}
+            onClick={() => setMoreShown(!moreShown)}
             className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]"
           >
             <span className="flex items-center">
-              {!categoriesShown ? (
+              {!moreShown ? (
                 <MdOutlineExpandMore className="" size={20} />
               ) : (
                 <MdOutlineExpandLess className="" size={20} />
               )}
               <span className="ml-3 text-[14px] ">
-                {!categoriesShown ? "More" : "Less"}
+                {!moreShown ? "More" : "Less"}
               </span>
             </span>
             <span className="text-xs font-semibold"></span>
