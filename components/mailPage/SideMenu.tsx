@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import {
   HiPencil,
   HiInbox,
@@ -17,13 +17,13 @@ import {
 } from "react-icons/md";
 import { VscSend } from "react-icons/vsc";
 import { GrDocument } from "react-icons/gr";
-import { AiOutlineCaretDown } from "react-icons/ai";
+import { AiOutlineCaretDown, AiOutlineCaretRight } from "react-icons/ai";
 import { PiChatsDuotone } from "react-icons/pi";
 import { BsTag } from "react-icons/bs";
 
 const SideMenu = () => {
-  const [categoriesShown,setCategoriesShown]=useState<boolean>(false);
-  const [moreShown,setMoreShown]=useState<boolean>(false);
+  const [categoriesShown, setCategoriesShown] = useState<boolean>(false);
+  const [moreShown, setMoreShown] = useState<boolean>(false);
   return (
     <div className="w-[18%] h-full ">
       <div className=" pt-4">
@@ -87,50 +87,58 @@ const SideMenu = () => {
             <span className="text-xs font-semibold"></span>
           </div>
           {/* Categories */}
-          <div className="flex items-center relative hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
+          <div onClick={()=>setCategoriesShown(!categoriesShown)} className="flex items-center relative hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
             <span className="flex  items-center">
               <span className="flex items-center">
-                <AiOutlineCaretDown className="absolute left-1" size={10} />
+                {!categoriesShown ? (
+                  <AiOutlineCaretRight className="absolute left-1" size={10} />
+                ) : (
+                  <AiOutlineCaretDown className="absolute left-1" size={10} />
+                )}
                 <MdLabelOutline className="" size={23} />
               </span>
 
-              <span className="ml-3 text-[14px] ">Categories</span>
+              <span className={`ml-3 text-[14px] ${!categoriesShown&& "font-bold"}` }>Categories</span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
           {/* Categories toggle */}
-          {/* Social */}
-          <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
-            <span className="flex items-center">
-              <HiOutlineUsers className="" size={18} />
-              <span className="ml-3 text-[14px]">Social</span>
-            </span>
-            <span className="text-xs ">1,833</span>
-          </div>
-          {/* Updates */}
-          <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
-            <span className="flex items-center">
-              <HiOutlineInformationCircle className="" size={18} />
-              <span className="ml-3 text-[14px]">Updates</span>
-            </span>
-            <span className="text-xs ">271</span>
-          </div>
-          {/* Forums */}
-          <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
-            <span className="flex items-center">
-              <PiChatsDuotone className="" size={18} />
-              <span className="ml-3 text-[14px]">Forums</span>
-            </span>
-            <span className="text-xs "></span>
-          </div>
-          {/* Promotions */}
-          <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
-            <span className="flex items-center">
-              <BsTag className="" size={18} />
-              <span className="ml-3 text-[14px]">Promotions</span>
-            </span>
-            <span className="text-xs ">1,286</span>
-          </div>
+          {categoriesShown && (
+            <>
+              {/* Social */}
+              <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
+                <span className="flex items-center">
+                  <HiOutlineUsers className="" size={18} />
+                  <span className="ml-3 text-[14px] font-bold">Social</span>
+                </span>
+                <span className="text-xs ">1,833</span>
+              </div>
+              {/* Updates */}
+              <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
+                <span className="flex items-center">
+                  <HiOutlineInformationCircle className="" size={18} />
+                  <span className="ml-3 text-[14px] font-bold">Updates</span>
+                </span>
+                <span className="text-xs ">271</span>
+              </div>
+              {/* Forums */}
+              <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
+                <span className="flex items-center">
+                  <PiChatsDuotone className="" size={18} />
+                  <span className="ml-3 text-[14px]">Forums</span>
+                </span>
+                <span className="text-xs "></span>
+              </div>
+              {/* Promotions */}
+              <div className="flex items-center hover:bg-[#eaebef] justify-between pl-8 hover:cursor-pointer  rounded-3xl px-4 py-[5px] text-[#444746]">
+                <span className="flex items-center">
+                  <BsTag className="" size={18} />
+                  <span className="ml-3 text-[14px] font-bold">Promotions</span>
+                </span>
+                <span className="text-xs ">1,286</span>
+              </div>
+            </>
+          )}
           {/* Show more */}
           <div
             onClick={() => setMoreShown(!moreShown)}
