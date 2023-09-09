@@ -27,7 +27,7 @@ const NavArea = () => {
           </div>
         </div>
         {/* User status */}
-        <div className="flex items-center space-x-1 bg-[#eaf1fb] rounded-3xl py-2 px-3 w-[10%]">
+        <div className="flex items-center space-x-1 bg-[#eaf1fb] hover:bg-[#e4ecf8] hover:cursor-pointer rounded-3xl py-2 px-3 w-[10%]">
           <div className="w-[12px] h-[12px] rounded-full bg-[#1e8e3e] mr-1"></div>
           <span className="font-semibold text-[#444746] text-[14px]">
             Active
