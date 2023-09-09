@@ -25,7 +25,7 @@ const SideMenu = () => {
   const [categoriesShown, setCategoriesShown] = useState<boolean>(false);
   const [moreShown, setMoreShown] = useState<boolean>(false);
   return (
-    <div className="w-[18%] h-full ">
+    <div className="w-[23%] h-full ">
       <div className=" pt-4">
         <div className="ml-5 flex items-center space-x-2">
           <img src={"/gmail.svg"} className="h-[35px]" />
@@ -87,7 +87,10 @@ const SideMenu = () => {
             <span className="text-xs font-semibold"></span>
           </div>
           {/* Categories */}
-          <div onClick={()=>setCategoriesShown(!categoriesShown)} className="flex items-center relative hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
+          <div
+            onClick={() => setCategoriesShown(!categoriesShown)}
+            className="flex items-center relative hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]"
+          >
             <span className="flex  items-center">
               <span className="flex items-center">
                 {!categoriesShown ? (
@@ -98,7 +101,13 @@ const SideMenu = () => {
                 <MdLabelOutline className="" size={23} />
               </span>
 
-              <span className={`ml-3 text-[14px] ${!categoriesShown&& "font-bold"}` }>Categories</span>
+              <span
+                className={`ml-3 text-[14px] ${
+                  !categoriesShown && "font-bold"
+                }`}
+              >
+                Categories
+              </span>
             </span>
             <span className="text-xs font-semibold"></span>
           </div>
