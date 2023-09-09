@@ -2,9 +2,11 @@ import { useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { IoMdApps, IoMdOptions, IoMdSettings } from "react-icons/io";
 import { MdHelpOutline, MdOutlineExpandMore } from "react-icons/md";
+import { useAppSelector } from "@/hooks/reduxHooks";
 
 const NavArea = () => {
   const [inputActive, setInputActive] = useState<boolean>(false);
+  const { user } = useAppSelector((state) => state.auth);
   return (
     <div className="w-full py-2">
       <div className="flex justify-between pr-4  w-full">
@@ -34,7 +36,6 @@ const NavArea = () => {
           </span>
           <MdOutlineExpandMore className="" size={18} />
         </div>
-
         {/* Options settings */}
         <div className="flex items-center w-[15%] justify-between mr-3">
           {/* Help */}
@@ -49,13 +50,19 @@ const NavArea = () => {
           <div className="hover:bg-[#e8eaed] rounded-full p-2 hover:cursor-pointer">
             <IoMdApps size={25} color={"#5f6368"} />
           </div>
-
           {/* User profile */}
-          <div className="hover:cursor-pointer ml-3">
-            <div className="w-[32px] h-[32px] text-white bg-[#004d40] flex items-center justify-center rounded-full text-lg">
-              J
+
+          {user?.photo ? (
+            <img
+              className="w-[35px] h-[35px] rounded-full hover:cursor-pointer ml-3 border-gray-300 hover:border-2 border-1 object-fit w-full m-0 p-0"
+              src={user.photo}
+              alt="User photo"
+            />
+          ) : (
+            <div className="w-[32px] h-[32px] hover:cursor-pointer ml-3 text-white bg-[#004d40] flex items-center justify-center rounded-full text-lg">
+              {user?.name?.charAt(0)}
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
