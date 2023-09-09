@@ -6,7 +6,7 @@ import { PiUsersThreeLight, PiVideoCamera } from "react-icons/pi";
 
 const MinMenu = () => {
   return (
-    <div className="h-full bg-[#eaf1fb] flex-col items-center w-[5%] px-1">
+    <div className="h-full bg-[#eaf1fb] flex-col items-center w-[6%] px-1">
       <div className="p-3 rounded-full hover:cursor-pointer mt-3 hover:bg-[#d8dfe8] flex items-center justify-center w-3/4 mx-auto">
         <AiOutlineMenu size={22} />
       </div>
