@@ -11,7 +11,7 @@ const NavArea = () => {
         <div
           className={`flex items-center px-[6px] ${
             inputActive ? "bg-white" : "bg-[#eaf1fb]"
-          } w-[65%]  rounded-3xl`}
+          } w-[68%]  rounded-3xl`}
         >
           <div className="mr-1 hover:cursor-pointer hover:bg-[#dde3ec] p-2 rounded-full">
             <HiOutlineSearch color={"#5f6368"} size={20} />
@@ -24,14 +24,16 @@ const NavArea = () => {
           />
         </div>
         {/* User status */}
-        <div className="flex items-center space-x-1 bg-[#eaf1fb] rounded-3xl py-2 px-3">
+        <div className="flex items-center space-x-1 bg-[#eaf1fb] rounded-3xl py-2 px-3 w-[10%]">
           <div className="w-[12px] h-[12px] rounded-full bg-[#1e8e3e] mr-1"></div>
-          <span className="font-semibold text-[#444746] text-[14px]">Active</span>
+          <span className="font-semibold text-[#444746] text-[14px]">
+            Active
+          </span>
           <MdOutlineExpandMore className="" size={18} />
         </div>
 
         {/* Options settings */}
-        <div className="flex items-center">
+        <div className="flex items-center w-[15%] justify-between mr-3">
           {/* Help */}
           <div className="hover:bg-[#e8eaed] rounded-full p-2 hover:cursor-pointer">
             <MdHelpOutline size={25} color={"#5f6368"} />
@@ -43,6 +45,11 @@ const NavArea = () => {
           {/* Google Apps */}
           <div className="hover:bg-[#e8eaed] rounded-full p-2 hover:cursor-pointer">
             <IoMdApps size={25} color={"#5f6368"} />
+          </div>
+
+          {/* User profile */}
+          <div className="hover:cursor-pointer ml-3">
+            <div className="w-[32px] h-[32px] text-white bg-[#004d40] flex items-center justify-center rounded-full text-lg">J</div>
           </div>
         </div>
       </div>
