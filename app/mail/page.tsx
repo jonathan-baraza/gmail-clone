@@ -45,7 +45,7 @@ function Mail() {
           <SideMenu />
           <div className="w-full ps-4">
             <NavArea />
-            <MyMails />
+            {/* <MyMails /> */}
           </div>
         </div>
       )}
