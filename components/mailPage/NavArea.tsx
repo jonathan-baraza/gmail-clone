@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
-import { IoMdApps, IoMdSettings } from "react-icons/io";
+import { IoMdApps, IoMdOptions, IoMdSettings } from "react-icons/io";
 import { MdHelpOutline, MdOutlineExpandMore } from "react-icons/md";
 
 const NavArea = () => {
   const [inputActive, setInputActive] = useState<boolean>(false);
   return (
     <div className="w-full py-2">
-      <div className="flex justify-between pr-4">
+      <div className="flex justify-between pr-4  w-full">
         <div
           className={`flex items-center px-[6px] ${
-            inputActive ? "bg-white" : "bg-[#eaf1fb]"
+            inputActive ? "bg-white shadow" : "bg-[#eaf1fb]"
           } w-[68%]  rounded-3xl`}
         >
           <div className="mr-1 hover:cursor-pointer hover:bg-[#dde3ec] p-2 rounded-full">
@@ -19,9 +19,12 @@ const NavArea = () => {
           <input
             onFocus={() => setInputActive(true)}
             onBlur={() => setInputActive(false)}
-            className="placeholder:text-[#5e5e63] placeholder:font-[400] py-3  bg-transparent  outline-none "
+            className="placeholder:text-[#5e5e63] placeholder:font-[400] py-3  flex-1 bg-transparent  outline-none "
             placeholder="Search in emails"
           />
+          <div className="ml-1 hover:cursor-pointer hover:bg-[#dde3ec] p-2 rounded-full">
+            <IoMdOptions color={"#3c3d3f"} size={20} />
+          </div>
         </div>
         {/* User status */}
         <div className="flex items-center space-x-1 bg-[#eaf1fb] rounded-3xl py-2 px-3 w-[10%]">
@@ -49,7 +52,9 @@ const NavArea = () => {
 
           {/* User profile */}
           <div className="hover:cursor-pointer ml-3">
-            <div className="w-[32px] h-[32px] text-white bg-[#004d40] flex items-center justify-center rounded-full text-lg">J</div>
+            <div className="w-[32px] h-[32px] text-white bg-[#004d40] flex items-center justify-center rounded-full text-lg">
+              J
+            </div>
           </div>
         </div>
       </div>
