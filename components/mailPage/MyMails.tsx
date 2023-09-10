@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const MyMails = () => {
   return (
-    <div className="h-full w-full bg-yellow-400">MyMails</div>
-  )
-}
+    <div className="w-full pr-4">
+      <div className="h-full w-full bg-white rounded-t-2xl p-3">MyMails</div>
+    </div>
+  );
+};
 
-export default MyMails
+export default MyMails;
