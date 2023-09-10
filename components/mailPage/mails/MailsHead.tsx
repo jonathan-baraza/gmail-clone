@@ -6,7 +6,7 @@ import { MdMoreVert, MdRefresh } from "react-icons/md";
 
 const MailsHead = () => {
   return (
-    <div className="w-full flex">
+    <div className="w-full flex items-center justify-between">
       <div className="flex items-center">
         <div className="hover:bg-[#f2f2f2] py-[10px] w-fit rounded px-1 hover:cursor-pointer">
           <BiSquare size={18} color={"#5f6368"} className="font-bold" />
