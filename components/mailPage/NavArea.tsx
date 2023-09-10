@@ -59,8 +59,10 @@ const NavArea = () => {
               alt="User photo"
             />
           ) : (
-            <div className="w-[32px] h-[32px] hover:cursor-pointer ml-3 text-white bg-[#004d40] flex items-center justify-center rounded-full text-lg">
-              {user?.name?.charAt(0)}
+            <div className="w-full ">
+              <div className="w-[32px] h-[32px] hover:cursor-pointer ml-3 text-white bg-[#004d40] flex items-center justify-center rounded-full text-lg">
+                {user?.name?.charAt(0) || "J"}
+              </div>{" "}
             </div>
           )}
         </div>
