@@ -32,7 +32,7 @@ const MailsHead = () => {
         </div>
       </div>
       <div className="flex items-center">
-        <span className="text-[#5f6368] text-xs">1-50 of 5,001</span>
+        <span className="text-[#858787] text-[13px]">1-50 of 5,001</span>
         <div className="flex items-center">
           <div className="hover:bg-[#e8eaed] rounded-full p-2 ml-3 hover:cursor-pointer">
             <HiChevronLeft size={20} color={"#b1b2b2"} />
