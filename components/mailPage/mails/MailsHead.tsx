@@ -1,8 +1,14 @@
 import React from "react";
 import { BsSquare } from "react-icons/bs";
 import { BiSquare } from "react-icons/bi";
-import { AiOutlineCaretDown, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import {
+  AiOutlineCaretDown,
+  AiOutlineLeft,
+  AiOutlineRight,
+} from "react-icons/ai";
 import { MdMoreVert, MdRefresh } from "react-icons/md";
+import { FaAngleRight } from "react-icons/fa";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 const MailsHead = () => {
   return (
@@ -25,14 +31,14 @@ const MailsHead = () => {
           <MdMoreVert size={20} color={"#5f6368"} />
         </div>
       </div>
-      <div>
+      <div className="flex items-center">
         <span className="text-[#5f6368] text-xs">1-50 of 5,001</span>
         <div className="flex items-center">
           <div className="hover:bg-[#e8eaed] rounded-full p-2 ml-3 hover:cursor-pointer">
-            <AiOutlineLeft size={20} color={"#5f6368"} />
+            <HiChevronLeft size={20} color={"#b1b2b2"} />
           </div>
-          <div className="hover:bg-[#e8eaed] rounded-full p-2 ml-3 hover:cursor-pointer">
-            <AiOutlineRight size={20} color={"#5f6368"} />
+          <div className="hover:bg-[#e8eaed] rounded-full p-2 ml-1 hover:cursor-pointer">
+            <HiChevronRight size={20} color={"#5f6368"} />
           </div>
         </div>
       </div>
