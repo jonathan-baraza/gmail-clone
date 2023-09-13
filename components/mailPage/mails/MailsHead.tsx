@@ -1,12 +1,12 @@
 import React from "react";
 import { BsSquare } from "react-icons/bs";
 import { BiSquare } from "react-icons/bi";
-import { AiOutlineCaretDown } from "react-icons/ai";
+import { AiOutlineCaretDown, AiOutlineRight } from "react-icons/ai";
 import { MdMoreVert, MdRefresh } from "react-icons/md";
 
 const MailsHead = () => {
   return (
-    <div className="w-full flex items-center justify-between">
+    <div className="w-full flex items-center justify-between ">
       <div className="flex items-center">
         <div className="hover:bg-[#f2f2f2] py-[10px] w-fit rounded px-1 hover:cursor-pointer">
           <BiSquare size={18} color={"#5f6368"} className="font-bold" />
@@ -26,7 +26,10 @@ const MailsHead = () => {
         </div>
       </div>
       <div>
-        <span className="text-[#6b6b6b] text-xs">1-5 of 5,001</span>
+        <span className="text-[#5f6368] text-xs">1-50 of 5,001</span>
+        <div>
+          <AiOutlineRight/>
+        </div>
       </div>
     </div>
   );
