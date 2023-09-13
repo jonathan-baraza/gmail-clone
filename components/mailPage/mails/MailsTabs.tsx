@@ -6,11 +6,11 @@ const MailsTabs = () => {
   return (
     <div className="w-full">
       <div
-        className="flex justify-center w-1/4 hover:bg-[#e8eaed] hover:cursor-pointer px-2 "
+        className="flex justify-center w-1/4 hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
         onClick={() => setActiveTab("primary")}
       >
         <div
-          className={`flex items-center w-full py-4 px-2 ${
+          className={`flex items-center w-full py-[15px] px-2 ${
             activeTab === "primary"
               ? "border-b-[3px] border-[#0b57d0]"
               : "border-none"
@@ -21,7 +21,7 @@ const MailsTabs = () => {
             color={`${activeTab === "primary" ? "#0b57d0" : "#444746"}`}
           />
           <span
-            className={`ml-3 ${
+            className={`ml-3 text-sm font-semibold ${
               activeTab === "primary" ? "text-[#0b57d0]" : "text-[#444746]"
             }`}
           >
