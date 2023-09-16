@@ -1,10 +1,14 @@
-import React from "react";
+import { useState } from "react";
 import { BiSquare, BiStar } from "react-icons/bi";
 import { MdLabelImportantOutline } from "react-icons/md";
 
 const EmailItem = () => {
+  const [subject, setSubject] = useState<string>("Meta Learning Program");
+  const [body, setBody] = useState<string>(
+    "Final learning week!!!You have been added to week 7!!"
+  );
   return (
-    <div className="flex items-center w-full px-2 justify-between ">
+    <div className="flex items-center w-full px-2 justify-between hover:shadow hover:cursor-pointer ">
       {/* Action labels */}
       <div className="flex">
         <div className="hover:bg-[#e8eaed] rounded-full p-2  hover:cursor-pointer">
@@ -19,19 +23,19 @@ const EmailItem = () => {
       </div>
 
       {/* Email Content */}
-      <div className="bg-red-500 flex-1 flex">
+      <div className="flex-1 flex">
         {/* Email Subject */}
-        <div className="w-[30%] bg-blue-400">
-          <span className="text-sm" >Meta Learning Program</span>
+        <div className="w-[25%] ">
+          <span className="text-[14px] ">{subject.slice(0, 19)}</span>
         </div>
         {/* Email Body */}
-        <div className="w-[70%] bg-yellow-300">
-          <span className="text-sm" >Final learning week!!!You have been added to week 7!!</span>
+        <div className="w-[%] ">
+          <span className="text-[14px]"></span>
         </div>
       </div>
       {/* Time */}
       <div className="mr-2">
-        <span className="text-[#5f6368] text-sm">12:04</span>
+        <span className="text-[#5f6368] text-[12px]">12:04</span>
       </div>
     </div>
   );
