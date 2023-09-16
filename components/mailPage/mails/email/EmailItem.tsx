@@ -26,7 +26,7 @@ const EmailItem = () => {
       <div className="flex-1 flex">
         {/* Email Subject */}
         <div className="w-[25%] ">
-          <span className="text-[14px] ">{subject.slice(0, 19)}</span>
+          <span className="text-[14px] ">{subject.slice(0, 19)+`${subject.length>20 && "."}`}</span>
         </div>
         {/* Email Body */}
         <div className="w-[%] ">
