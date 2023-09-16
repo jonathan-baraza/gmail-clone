@@ -11,8 +11,10 @@ const MailsTabs = () => {
         onClick={() => setActiveTab("primary")}
       >
         <div
-          className={`flex border-b-[3px] items-center w-full py-[15px] px-2 ${
-            activeTab === "primary" ? " border-[#0b57d0]" : "border-[#f4f4f4]"
+          className={`flex border-b-[3px] items-center w-full py-[16px] px-2  ${
+            activeTab === "primary"
+              ? " border-[#0b57d0]"
+              : " border-transparent"
           }`}
         >
           <HiInbox
@@ -35,10 +37,10 @@ const MailsTabs = () => {
         onClick={() => setActiveTab("promotions")}
       >
         <div
-          className={`flex border-b-[3px] items-center w-full py-[15px] px-2 ${
+          className={`flex border-b-[3px] items-center w-full py-[16px] px-2  ${
             activeTab === "promotions"
               ? " border-[#0b57d0]"
-              : "border-[#f4f4f4]"
+              : "border-transparent"
           }`}
         >
           {activeTab === "promotions" ? (
