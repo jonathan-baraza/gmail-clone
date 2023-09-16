@@ -70,7 +70,7 @@ const MailsTabs = () => {
           }`}
         >
           <HiOutlineUsers
-            size={20}
+            size={18}
             color={`${activeTab === "social" ? "#0b57d0" : "#444746"}`}
           />
 
