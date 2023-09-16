@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { HiInbox } from "react-icons/hi";
+import { HiInbox, HiOutlineTag, HiTag } from "react-icons/hi";
 
 const MailsTabs = () => {
   const [activeTab, setActiveTab] = useState<string>("primary");
   return (
-    <div className="w-full">
+    <div className="w-full flex items-center">
+      {/* Primary tag */}
       <div
         className="flex justify-center w-1/4 hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
         onClick={() => setActiveTab("primary")}
@@ -26,6 +27,34 @@ const MailsTabs = () => {
             }`}
           >
             Primary
+          </span>
+        </div>
+      </div>
+
+      {/* Promotions */}
+      <div
+        className="flex justify-center w-1/4 hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
+        onClick={() => setActiveTab("promotions")}
+      >
+        <div
+          className={`flex items-center w-full py-[15px] px-2 ${
+            activeTab === "promotions"
+              ? "border-b-[3px] border-[#0b57d0]"
+              : "border-none"
+          }`}
+        >
+          {activeTab === "promotions" ? (
+            <HiTag size={20} color={"#0b57d0"} />
+          ) : (
+            <HiOutlineTag size={20} color={"#444746"} />
+          )}
+
+          <span
+            className={`ml-3 text-sm font-semibold ${
+              activeTab === "promotions" ? "text-[#0b57d0]" : "text-[#444746]"
+            }`}
+          >
+            Promotions
           </span>
         </div>
       </div>
