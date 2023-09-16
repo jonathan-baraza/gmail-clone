@@ -4,7 +4,7 @@ import { HiInbox, HiOutlineTag, HiOutlineUsers, HiTag } from "react-icons/hi";
 const MailsTabs = () => {
   const [activeTab, setActiveTab] = useState<string>("primary");
   return (
-    <div className="w-full flex items-center">
+    <div className="w-full flex items-center border-b border-[#eceff1]">
       {/* Primary tag */}
       <div
         className="flex justify-center w-[26%] hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
