@@ -7,7 +7,7 @@ const MailsTabs = () => {
     <div className="w-full flex items-center">
       {/* Primary tag */}
       <div
-        className="flex justify-center w-1/4 hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
+        className="flex justify-center w-[26%] hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
         onClick={() => setActiveTab("primary")}
       >
         <div
@@ -33,7 +33,7 @@ const MailsTabs = () => {
 
       {/* Promotions */}
       <div
-        className="flex justify-center w-1/4 hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
+        className="flex justify-center w-[26%] hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
         onClick={() => setActiveTab("promotions")}
       >
         <div
@@ -61,7 +61,7 @@ const MailsTabs = () => {
 
       {/* Social */}
       <div
-        className="flex justify-center w-1/4 hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
+        className="flex justify-center w-[26%] hover:bg-[#f4f4f4] hover:cursor-pointer px-2 "
         onClick={() => setActiveTab("social")}
       >
         <div
