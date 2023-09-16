@@ -20,6 +20,7 @@ import { GrDocument } from "react-icons/gr";
 import { AiOutlineCaretDown, AiOutlineCaretRight } from "react-icons/ai";
 import { PiChatsDuotone } from "react-icons/pi";
 import { BsTag } from "react-icons/bs";
+import { BiStar } from "react-icons/bi";
 
 const SideMenu = () => {
   const [categoriesShown, setCategoriesShown] = useState<boolean>(false);
@@ -49,7 +50,7 @@ const SideMenu = () => {
           {/* Starred */}
           <div className="flex items-center hover:bg-[#eaebef] justify-between px-2 hover:cursor-pointer  rounded-3xl px-4 py-[6px] text-[#444746]">
             <span className="flex items-center">
-              <HiOutlineStar className="" size={20} />
+              <BiStar className="" size={20} />
               <span className="ml-3 text-[14px]">Starred</span>
             </span>
             <span className="text-xs font-semibold"></span>
