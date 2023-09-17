@@ -2,12 +2,12 @@ import { useState } from "react";
 import { BiSquare, BiStar } from "react-icons/bi";
 import { MdLabelImportant, MdLabelImportantOutline } from "react-icons/md";
 
-const EmailItem = () => {
-  const [subject, setSubject] = useState<string>("Meta Learning Program");
-  const [body, setBody] = useState<string>(
-    "Final learning week!!!You have been added to week 7!!"
-  );
-  const [isImportant, setIsImportant] = useState<boolean>(true);
+const EmailItem = ({subject,body,isImportant,isStarred}:EmailItemType) => {
+  // const [subject, setSubject] = useState<string>("Meta Learning Program");
+  // const [body, setBody] = useState<string>(
+  //   "Final learning week!!!You have been added to week 7!!"
+  // );
+  
   return (
     <div className="flex items-center w-full px-2 border-b border-[#eceff1] justify-between hover:shadow hover:cursor-pointer ">
       {/* Action labels */}
