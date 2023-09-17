@@ -2,18 +2,24 @@ import { useState } from "react";
 import { BiSquare, BiStar } from "react-icons/bi";
 import { MdLabelImportant, MdLabelImportantOutline } from "react-icons/md";
 
-const EmailItem = ({subject,body,isImportant,isStarred,time}:EmailItemType) => {
+const EmailItem = ({
+  subject,
+  body,
+  isImportant,
+  isStarred,
+  time,
+}: EmailItemType) => {
   // const [subject, setSubject] = useState<string>("Meta Learning Program");
   // const [body, setBody] = useState<string>(
   //   "Final learning week!!!You have been added to week 7!!"
   // );
-  
+
   return (
     <div className="flex items-center w-full px-2 border-b border-[#eceff1] justify-between hover:shadow hover:cursor-pointer ">
       {/* Action labels */}
       <div className="flex">
         <div className="hover:bg-[#e8eaed] rounded-full p-3  hover:cursor-pointer emailActionIconContainer">
-          <BiSquare size={18}  className="emailActionIcon" />
+          <BiSquare size={18} className="emailActionIcon" />
         </div>
         <div className="hover:bg-[#e8eaed] rounded-full p-3 -ml-[6px] hover:cursor-pointer emailActionIconContainer">
           <BiStar size={17} className="emailActionIcon" />
@@ -37,7 +43,9 @@ const EmailItem = ({subject,body,isImportant,isStarred,time}:EmailItemType) => {
         </div>
         {/* Email Body */}
         <div className="w-[%] -ml-1">
-          <span className="text-[14px]">{body}</span>
+          <span className="text-[14px]">
+            {body.slice(0, 85) + `${body.length > 85 ? "..." : ""}`}
+          </span>
         </div>
       </div>
       {/* Time */}
