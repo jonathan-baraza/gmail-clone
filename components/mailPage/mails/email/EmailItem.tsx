@@ -43,7 +43,7 @@ const EmailItem = ({
         {/* Email Subject */}
         <div className="w-[25%] ">
           <span className="text-[14px] ">
-            {subject.slice(0, 19) + `${subject.length > 20 && "."}`}
+            {subject.slice(0, 19) + `${subject.length > 20 ? ".":""}`}
           </span>
         </div>
         {/* Email Body */}
