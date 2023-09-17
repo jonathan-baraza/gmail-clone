@@ -3,7 +3,7 @@ import EmailItem from "./EmailItem";
 
 const EmailContainer = () => {
   return (
-    <div>
+    <div className="bg-[#f2f6fc]">
       <EmailItem
         subject={"Meta Learning Program"}
         body={"Final learning week!!!You have been added to week 7!!"}
@@ -18,9 +18,9 @@ const EmailContainer = () => {
           "Strictly private and confidetial! We are excited to have you join the PwC family where you will have an opportunity to learn, develop and charter your career."
         }
         time={"10:15"}
-        isImportant={false}
+        isImportant={true}
         isStarred={false}
-        isViewed={false}
+        isViewed={true}
       />
       <EmailItem
         subject={"MyJobMag Kenya"}
@@ -30,7 +30,7 @@ const EmailContainer = () => {
         time={"07:46"}
         isImportant={false}
         isStarred={false}
-        isViewed={false}
+        isViewed={true}
       />
     </div>
   );
