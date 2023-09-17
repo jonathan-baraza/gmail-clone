@@ -17,7 +17,7 @@ const EmailItem = ({
 
   return (
     <div
-      className={`flex items-center w-full px-2 border-b border-[#eceff1] justify-between hover:shadow hover:cursor-pointer ${
+      className={`flex items-center w-full px-2 border-b border-[#e3e5e6] justify-between hover:shadow-lg mb-[1px] hover:cursor-pointer ${
         isViewed ? "bg-[#f2f6fc]" : "bg-white"
       } `}
     >
@@ -43,7 +43,7 @@ const EmailItem = ({
         {/* Email Subject */}
         <div className="w-[25%] ">
           <span className="text-[14px] ">
-            {subject.slice(0, 19) + `${subject.length > 20 ? ".":""}`}
+            {subject.slice(0, 19) + `${subject.length > 20 ? "." : ""}`}
           </span>
         </div>
         {/* Email Body */}
