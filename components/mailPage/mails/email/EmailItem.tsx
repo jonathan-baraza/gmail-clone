@@ -8,6 +8,7 @@ const EmailItem = ({
   isImportant,
   isStarred,
   time,
+  isViewed,
 }: EmailItemType) => {
   // const [subject, setSubject] = useState<string>("Meta Learning Program");
   // const [body, setBody] = useState<string>(
@@ -15,7 +16,11 @@ const EmailItem = ({
   // );
 
   return (
-    <div className="flex items-center w-full px-2 border-b border-[#eceff1] justify-between hover:shadow hover:cursor-pointer ">
+    <div
+      className={`flex items-center w-full px-2 border-b border-[#eceff1] justify-between hover:shadow hover:cursor-pointer ${
+        isViewed ? "bg-[#f2f6fc]" : "bg-white"
+      } `}
+    >
       {/* Action labels */}
       <div className="flex">
         <div className="hover:bg-[#e8eaed] rounded-full p-3  hover:cursor-pointer emailActionIconContainer">
