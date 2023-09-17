@@ -4,4 +4,5 @@ interface EmailItemType{
     time:string,
     isImportant?:boolean,
     isStarred?:boolean,
+    isViewed?:boolean,
 }
