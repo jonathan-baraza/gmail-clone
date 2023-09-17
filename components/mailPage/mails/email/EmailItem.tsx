@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BiSquare, BiStar } from "react-icons/bi";
 import { MdLabelImportant, MdLabelImportantOutline } from "react-icons/md";
 
-const EmailItem = ({subject,body,isImportant,isStarred}:EmailItemType) => {
+const EmailItem = ({subject,body,isImportant,isStarred,time}:EmailItemType) => {
   // const [subject, setSubject] = useState<string>("Meta Learning Program");
   // const [body, setBody] = useState<string>(
   //   "Final learning week!!!You have been added to week 7!!"
@@ -42,7 +42,7 @@ const EmailItem = ({subject,body,isImportant,isStarred}:EmailItemType) => {
       </div>
       {/* Time */}
       <div className="mr-2">
-        <span className="text-[#5f6368] text-[12px]">12:14</span>
+        <span className="text-[#5f6368] text-[12px]">{time}</span>
       </div>
     </div>
   );
