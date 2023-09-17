@@ -10,6 +10,7 @@ const EmailContainer = () => {
         time={"12:14"}
         isImportant={false}
         isStarred={false}
+        isViewed={false}
       />
       <EmailItem
         subject={"PWC Offer and Contract"}
@@ -19,6 +20,7 @@ const EmailContainer = () => {
         time={"12:14"}
         isImportant={false}
         isStarred={false}
+        isViewed={false}
       />
     </div>
   );
