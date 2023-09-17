@@ -42,7 +42,7 @@ const EmailItem = () => {
       </div>
       {/* Time */}
       <div className="mr-2">
-        <span className="text-[#5f6368] text-[12px]">12:04</span>
+        <span className="text-[#5f6368] text-[12px]">12:14</span>
       </div>
     </div>
   );
