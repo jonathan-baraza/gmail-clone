@@ -17,7 +17,17 @@ const EmailContainer = () => {
         body={
           "Strictly private and confidetial! We are excited to have you join the PwC family where you will have an opportunity to learn, develop and charter your career."
         }
-        time={"12:14"}
+        time={"10:15"}
+        isImportant={false}
+        isStarred={false}
+        isViewed={false}
+      />
+      <EmailItem
+        subject={"MyJobMag Kenya"}
+        body={
+          "Capital Markets Authority, Royal Media Group, World Bank, Nairobi Safari Club, KOKO Networks, World Vision Recruitment"
+        }
+        time={"07:46"}
         isImportant={false}
         isStarred={false}
         isViewed={false}
