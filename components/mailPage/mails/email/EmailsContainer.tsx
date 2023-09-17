@@ -11,6 +11,15 @@ const EmailContainer = () => {
         isImportant={false}
         isStarred={false}
       />
+      <EmailItem
+        subject={"PWC Offer and Contract"}
+        body={
+          "Strictly private and confidetial! We are excited to have you join the PwC family where you will have an opportunity to learn, develop and charter your career."
+        }
+        time={"12:14"}
+        isImportant={false}
+        isStarred={false}
+      />
     </div>
   );
 };
